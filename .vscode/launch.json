@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Phase1.Main",
+            "projectName": "JavaFX Project_510cd737"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Menu.Main",
+            "projectName": "JavaFX Project_510cd737",
+            "vmArgs": " --module-path \"C:/Program Files (x86)/Java/javafx-sdk-23.0.1/lib\" --add-modules javafx.fxml,javafx.controls,javafx.graphics"
+        }
+    ]
+}
