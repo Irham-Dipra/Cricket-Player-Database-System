@@ -45,7 +45,7 @@ public class Main extends Application {
     public void showGuestHomePage() throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("guestHomePage.fxml"));
+        loader.setLocation(getClass().getResource("guestMenu/guestHomePage.fxml"));
         Parent root = loader.load();
 
         // Loading the controller
@@ -61,7 +61,7 @@ public class Main extends Application {
     public void searchPlayersMenu() throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Menu/guestMenu/searchPlayers.fxml"));
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers.fxml"));
         Parent root = loader.load();
 
         // Loading the controller
@@ -77,7 +77,7 @@ public class Main extends Application {
     public void searchClubsMenu() throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("searchClubs.fxml"));
+        loader.setLocation(getClass().getResource("guestMenu/searchClubs.fxml"));
         Parent root = loader.load();
 
         // Loading the controller
@@ -94,7 +94,7 @@ public class Main extends Application {
     {
         System.out.println("ashche");
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("addPlayers.fxml"));
+        loader.setLocation(getClass().getResource("guestMenu/addPlayers.fxml"));
         Parent root = loader.load();
 
         // Loading the controller
