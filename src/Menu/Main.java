@@ -4,12 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import Menu.guestMenu.guestHomePageController;
 import Menu.guestMenu.searchPlayersController;
 import Menu.guestMenu.searchClubsController;
 import Menu.guestMenu.addPlayersController;
+import Menu.guestMenu.searchPlayers.searchByNameController;
 // import javafx.scene.control.Alert;
 
 public class Main extends Application {
@@ -107,16 +107,24 @@ public class Main extends Application {
         stage.show();
     }
 
+    public void showSearchByName() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/searchByName.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        searchByNameController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Search By Name");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+    
     public static void main(String[] args) {
         launch(args);
     }
 
-    public void showWrongInputAlert(String str)
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Incorrect " + str + " format");
-        alert.setHeaderText("Incorrect input format");
-        alert.setContentText("The " + str + " format is not correct.");
-        alert.showAndWait();
-    }
 }
