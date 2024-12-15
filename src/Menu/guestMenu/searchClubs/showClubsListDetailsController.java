@@ -1,4 +1,4 @@
-package Menu.guestMenu.searchPlayers;
+package Menu.guestMenu.searchClubs;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 import Menu.Main;
 
 
-public class showListDetailsController {
+public class showClubsListDetailsController {
 
     private Menu.Main main;
 
@@ -79,7 +79,7 @@ public class showListDetailsController {
     {
         System.out.println("back button initiated");
         try {
-            main.searchPlayersMenu();
+            main.searchClubsMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }

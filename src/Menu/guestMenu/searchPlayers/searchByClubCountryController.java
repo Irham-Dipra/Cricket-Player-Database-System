@@ -38,7 +38,7 @@ public class searchByClubCountryController {
         else
         {
             try {
-                main.showListDetails(playerList);
+                main.showPlayersListDetails(playerList);
             } catch (Exception e) {
                 e.printStackTrace();
             }

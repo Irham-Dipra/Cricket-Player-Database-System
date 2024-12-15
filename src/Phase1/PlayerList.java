@@ -199,11 +199,11 @@ public class PlayerList {
                 max = Math.max(max, p.salary);
             }
         }
+        List<Player> temp = new ArrayList<>();
         if(max == -1)
         {
-            return null;
+            return temp;
         }
-        List<Player> temp = new ArrayList<>();
         for(int i = 0;i < playerList.size();i++)
         {
             Player p = playerList.get(i);

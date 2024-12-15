@@ -12,9 +12,11 @@ import Menu.guestMenu.addPlayersController;
 import Menu.guestMenu.searchPlayers.showPlayerDetailsController;
 import Menu.guestMenu.searchPlayers.searchByClubCountryController;
 import Menu.guestMenu.searchPlayers.searchByPositionController;
-import Menu.guestMenu.searchPlayers.showListDetailsController;
+import Menu.guestMenu.searchPlayers.showPlayersListDetailsController;
 import Menu.guestMenu.searchPlayers.searchByNameController;
 import Menu.guestMenu.searchPlayers.searchBySalaryController;
+import Menu.guestMenu.searchClubs.searchByMaxSalaryController;
+import Menu.guestMenu.searchClubs.showClubsListDetailsController;
 import Phase1.phase1Main;
 import Phase1.Player;
 import java.util.List;
@@ -164,14 +166,31 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showListDetails(List<Player> playerList) throws Exception
+    public void showPlayersListDetails(List<Player> playerList) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/showListDetails.fxml"));
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/showPlayersListDetails.fxml"));
         Parent root = loader.load();
 
         // Loading the controller
-        showListDetailsController controller = loader.getController();
+        showPlayersListDetailsController controller = loader.getController();
+        controller.setPlayerList(playerList);
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Player Details");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showClubsListDetails(List<Player> playerList) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchClubs/showClubsListDetails.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        showClubsListDetailsController controller = loader.getController();
         controller.setPlayerList(playerList);
         controller.setMain(this);
 
@@ -212,6 +231,24 @@ public class Main extends Application {
         stage.setScene(new Scene(root, 500, 400));
         stage.show();
     }
+
+    public void showMaxSalary() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        System.out.println("ashche");
+        loader.setLocation(getClass().getResource("guestMenu/searchClubs/searchByMaxSalary.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        searchByMaxSalaryController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Max Salary");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+    
     
     public static void main(String[] args) {
         try {

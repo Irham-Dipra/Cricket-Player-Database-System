@@ -13,6 +13,11 @@ public class searchClubsController {
     public void maxSalaryClicked(ActionEvent actionEvent)
     {
         System.out.println("max Salary initiated");
+        try {
+            main.showMaxSalary();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
     public void maxAgeClicked(ActionEvent actionEvent)
     {

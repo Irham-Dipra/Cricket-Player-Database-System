@@ -43,7 +43,7 @@ public class searchByPositionController {
             // Show player details (if you want to display in a TableView or other UI element)
             PlayerList.showAllPlayers(playerList);
             try {
-                main.showListDetails(playerList); // Show the list of players (this can be customized)
+                main.showPlayersListDetails(playerList); // Show the list of players (this can be customized)
             } catch (Exception e) {
                 e.printStackTrace();
             }

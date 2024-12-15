@@ -48,7 +48,7 @@ public class searchBySalaryController {
             } else {
                 PlayerList.showAllPlayers(players); // Display the list of players (implement this method in PlayerList)
                 try {
-                    main.showListDetails(players); // Navigate to a screen displaying the player list
+                    main.showPlayersListDetails(players); // Navigate to a screen displaying the player list
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
