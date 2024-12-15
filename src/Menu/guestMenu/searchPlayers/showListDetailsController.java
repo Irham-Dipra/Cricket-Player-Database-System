@@ -79,7 +79,7 @@ public class showListDetailsController {
     {
         System.out.println("back button initiated");
         try {
-            main.showSearchByClubCountry();
+            main.searchPlayersMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }

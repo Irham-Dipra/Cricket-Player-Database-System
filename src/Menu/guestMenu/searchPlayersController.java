@@ -31,6 +31,11 @@ public class searchPlayersController {
     public void searchByPositionClicked(ActionEvent actionEvent)
     {
         System.out.println("search by position initiated");
+        try {
+            main.showSearchByPosition();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void searchBySalaryClicked(ActionEvent actionEvent)
     {

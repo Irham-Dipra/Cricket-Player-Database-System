@@ -11,10 +11,10 @@ import Menu.guestMenu.searchClubsController;
 import Menu.guestMenu.addPlayersController;
 import Menu.guestMenu.searchPlayers.showPlayerDetailsController;
 import Menu.guestMenu.searchPlayers.searchByClubCountryController;
+import Menu.guestMenu.searchPlayers.searchByPositionController;
 import Menu.guestMenu.searchPlayers.showListDetailsController;
 import Menu.guestMenu.searchPlayers.searchByNameController;
 import Phase1.phase1Main;
-import Phase1.PlayerList;
 import Phase1.Player;
 import java.util.List;
 // import javafx.scene.control.Alert;
@@ -176,6 +176,22 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Player Details");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showSearchByPosition() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/searchByPosition.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        searchByPositionController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Search By Position");
         stage.setScene(new Scene(root, 500, 400));
         stage.show();
     }
