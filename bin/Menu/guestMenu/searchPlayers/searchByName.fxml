@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Menu.guestMenu.searchPlayers.searchByNameController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.guestMenu.searchPlayers.searchByNameController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -17,9 +17,9 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="500.0">
          <children>
-            <TextField fx:id="nameField" layoutX="109.0" layoutY="181.0" prefHeight="26.0" prefWidth="294.0" text="Enter the name" />
-            <Button fx:id="search" layoutX="160.0" layoutY="251.0" mnemonicParsing="false" onAction="#searchClicked" text="Search" />
-            <Button fx:id="back" layoutX="286.0" layoutY="251.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
+            <TextField fx:id="nameField" layoutX="178.0" layoutY="135.0" prefHeight="26.0" prefWidth="144.0" text="Enter the name" />
+            <Button fx:id="search" layoutX="224.0" layoutY="197.0" mnemonicParsing="false" onAction="#searchClicked" text="Search" />
+            <Button fx:id="back" layoutX="230.0" layoutY="250.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
          </children>
       </AnchorPane>
    </children>

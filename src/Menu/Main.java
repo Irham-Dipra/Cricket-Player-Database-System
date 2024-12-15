@@ -9,7 +9,12 @@ import Menu.guestMenu.guestHomePageController;
 import Menu.guestMenu.searchPlayersController;
 import Menu.guestMenu.searchClubsController;
 import Menu.guestMenu.addPlayersController;
+import Menu.guestMenu.searchPlayers.showPlayerDetailsController;
 import Menu.guestMenu.searchPlayers.searchByNameController;
+import Phase1.phase1Main;
+import Phase1.PlayerList;
+import Phase1.Player;
+import java.util.List;
 // import javafx.scene.control.Alert;
 
 public class Main extends Application {
@@ -122,9 +127,33 @@ public class Main extends Application {
         stage.setScene(new Scene(root, 500, 400));
         stage.show();
     }
+
+    public void showPlayerDetails(Player player) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/showPlayerDetails.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        showPlayerDetailsController controller = loader.getController();
+        controller.setPlayer(player);
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Player Details");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
     
     public static void main(String[] args) {
+        try {
+            phase1Main.setFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         launch(args);
+
     }
 
 }

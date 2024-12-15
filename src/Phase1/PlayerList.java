@@ -56,15 +56,15 @@ public class PlayerList {
         return false;
     }
 
-    public static List<Player> getSearchByNameList(String name)
+    public static Player getSearchByNamePlayer(String name)
     {
-        List<Player> temp = new ArrayList<>();
+        Player temp = null;
         for(int i = 0;i < playerList.size();i++)
         {
             Player p = playerList.get(i);
             if((p.name).equals(name))
             {
-                temp.add(p);
+                temp = p;
                 return temp;
             }
         }
@@ -73,13 +73,13 @@ public class PlayerList {
 
     public static void searchByName(String name)
     {
-        List<Player> list = getSearchByNameList(name);
-        if(list == null)
+        Player player = getSearchByNamePlayer(name);
+        if(player == null)
         {
             System.out.println("No such player with this name");
             return;
         }
-        showAllPlayers(list);
+        showDetails(player);
     }
 
     public static List<Player> getSearchByClubAndCountryList(String country, String club)

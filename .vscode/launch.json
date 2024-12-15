@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "phase1Main",
+            "request": "launch",
+            "mainClass": "Phase1.phase1Main",
+            "projectName": "JavaFX Project_510cd737"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Phase1.Main",

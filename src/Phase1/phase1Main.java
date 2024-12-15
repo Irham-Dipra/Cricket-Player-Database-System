@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class Main{
+public class phase1Main{
     // function to print main menu
     static Scanner scanner = new Scanner(System.in);
     static String FILE_NAME = "src/Phase1/players.txt";
@@ -164,7 +164,9 @@ public class Main{
         dummy = scanner.nextLine();
         PlayerList.addPlayer(name, country, age, height, club, position, number, salary, false);
     }
-    public static void main(String []args) throws Exception {
+
+    public static void setFile() throws Exception
+    {
         BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
         String line;
         while((line = br.readLine()) != null)
@@ -183,6 +185,9 @@ public class Main{
             PlayerList.addPlayer(name, country, age, height, club, position, number, salary, true);
         }
         br.close();
+    }
+    public static void main(String []args) throws Exception {
+        setFile();
         while(true)
         {
             mainMenu();// displays main menu
