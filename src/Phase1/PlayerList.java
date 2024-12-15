@@ -277,11 +277,11 @@ public class PlayerList {
                 max = Math.max(max, p.height);
             }
         }
+        List<Player> temp = new ArrayList<>();
         if(max < 0)
         {
-            return null;
+            return temp;
         }
-        List<Player> temp = new ArrayList<>();
         for(int i = 0;i < playerList.size();i++)
         {
             Player p = playerList.get(i);
@@ -296,7 +296,7 @@ public class PlayerList {
     public static void getMaxHeightPlayer(String club)
     {
         List<Player> list = getMaxHeightPlayerList(club);
-        if(list == null)
+        if(list == null || list.size() == 0)
         {
             System.out.println("No such club with this name");
             return;

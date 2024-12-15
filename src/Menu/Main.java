@@ -17,6 +17,7 @@ import Menu.guestMenu.searchPlayers.searchByNameController;
 import Menu.guestMenu.searchPlayers.searchBySalaryController;
 import Menu.guestMenu.searchClubs.searchByMaxSalaryController;
 import Menu.guestMenu.searchClubs.showClubsListDetailsController;
+import Menu.guestMenu.searchClubs.searchByMaxHeightController;
 import Menu.guestMenu.searchClubs.searchByMaxAgeController;
 import Phase1.phase1Main;
 import Phase1.Player;
@@ -259,6 +260,23 @@ public class Main extends Application {
 
         // Loading the controller
         searchByMaxAgeController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Max Salary");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showMaxHeight() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        System.out.println("ashche");
+        loader.setLocation(getClass().getResource("guestMenu/searchClubs/searchByMaxHeight.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        searchByMaxHeightController controller = loader.getController();
         controller.setMain(this);
 
         // Set the primary stage

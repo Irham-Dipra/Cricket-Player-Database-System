@@ -31,6 +31,11 @@ public class searchClubsController {
     public void maxHeightClicked(ActionEvent actionEvent)
     {
         System.out.println("max Height initiated");
+        try {
+            main.showMaxHeight();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
     public void totalSalaryClicked(ActionEvent actionEvent)
     {
