@@ -149,10 +149,6 @@ public class PlayerList {
                 temp.add(p);
             }
         }
-        if(temp.size() == 0)
-        {
-            return null;
-        }
         return temp;
     }
 

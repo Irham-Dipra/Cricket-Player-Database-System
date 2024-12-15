@@ -40,6 +40,11 @@ public class searchPlayersController {
     public void searchBySalaryClicked(ActionEvent actionEvent)
     {
         System.out.println("search by salary initiated");
+        try {
+            main.showSearchBySalary();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void countryPlayerCountClicked(ActionEvent actionEvent)
     {

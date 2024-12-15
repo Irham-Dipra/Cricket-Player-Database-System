@@ -14,6 +14,7 @@ import Menu.guestMenu.searchPlayers.searchByClubCountryController;
 import Menu.guestMenu.searchPlayers.searchByPositionController;
 import Menu.guestMenu.searchPlayers.showListDetailsController;
 import Menu.guestMenu.searchPlayers.searchByNameController;
+import Menu.guestMenu.searchPlayers.searchBySalaryController;
 import Phase1.phase1Main;
 import Phase1.Player;
 import java.util.List;
@@ -192,6 +193,22 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search By Position");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showSearchBySalary() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/searchBySalary.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        searchBySalaryController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Search By Salary");
         stage.setScene(new Scene(root, 500, 400));
         stage.show();
     }
