@@ -22,6 +22,11 @@ public class searchClubsController {
     public void maxAgeClicked(ActionEvent actionEvent)
     {
         System.out.println("max Age initiated");
+        try {
+            main.showMaxAge();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
     public void maxHeightClicked(ActionEvent actionEvent)
     {
