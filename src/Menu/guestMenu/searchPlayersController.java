@@ -22,6 +22,11 @@ public class searchPlayersController {
     public void searchByClubCountryClicked(ActionEvent actionEvent)
     {
         System.out.println("search by clubs and country initiated");
+        try {
+            main.showSearchByClubCountry();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void searchByPositionClicked(ActionEvent actionEvent)
     {

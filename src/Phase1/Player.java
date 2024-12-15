@@ -5,7 +5,7 @@ public class Player {
     double height;
     // number = -1;
     boolean exist;
-    Player(String name, String country, int age, double height, String club, String position, int number, int salary, boolean exist)
+    public Player(String name, String country, int age, double height, String club, String position, int number, int salary, boolean exist)
     {
         this.name = name;
         this.country = country;
@@ -45,10 +45,10 @@ public class Player {
     public void setAge(int age) {
         this.age = age;
     }
-    public int getJerseyNumber() {
+    public int getJersey() {
         return number;
     }
-    public void setNumber(int number) {
+    public void setJersey(int number) {
         this.number = number;
     }
     public int getSalary() {

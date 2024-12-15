@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.guestMenu.searchPlayers.showListDetailsController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="500.0">
+         <children>
+            <TableView fx:id="table" layoutX="4.0" layoutY="10.0" prefHeight="330.0" prefWidth="486.0">
+              <columns>
+                <TableColumn fx:id="name" prefWidth="70.40002250671387" text="Name" />
+                <TableColumn fx:id="country" prefWidth="60.00000762939453" text="Country" />
+                  <TableColumn fx:id="age" prefWidth="47.199951171875" text="Age" />
+                  <TableColumn fx:id="height" prefWidth="65.5999755859375" text="Height" />
+                  <TableColumn fx:id="club" prefWidth="56.79998779296875" text="Club" />
+                  <TableColumn fx:id="position" prefWidth="61.60003662109375" text="Position" />
+                  <TableColumn fx:id="jersey" prefWidth="48.79998779296875" text="Jersey" />
+                  <TableColumn fx:id="salary" prefWidth="95.19992065429688" text="Salary" />
+              </columns>
+            </TableView>
+            <Button fx:id="back" layoutX="224.0" layoutY="361.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

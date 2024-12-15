@@ -33,7 +33,7 @@ public class PlayerList {
 
     public static void showAllPlayers(List<Player> list)
     {
-        if(list == null)
+        if(list == null || list.size() == 0)
             return;
         System.out.println("*****************************");
         for(int i = 0;i < list.size();i++)
@@ -92,10 +92,6 @@ public class PlayerList {
             {
                 temp.add(p);
             }
-        }
-        if(temp.size() == 0)
-        {
-            return null;
         }
         return temp;
     }

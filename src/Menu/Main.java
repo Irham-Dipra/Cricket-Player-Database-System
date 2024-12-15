@@ -10,6 +10,8 @@ import Menu.guestMenu.searchPlayersController;
 import Menu.guestMenu.searchClubsController;
 import Menu.guestMenu.addPlayersController;
 import Menu.guestMenu.searchPlayers.showPlayerDetailsController;
+import Menu.guestMenu.searchPlayers.searchByClubCountryController;
+import Menu.guestMenu.searchPlayers.showListDetailsController;
 import Menu.guestMenu.searchPlayers.searchByNameController;
 import Phase1.phase1Main;
 import Phase1.PlayerList;
@@ -145,6 +147,38 @@ public class Main extends Application {
         stage.show();
     }
 
+    public void showSearchByClubCountry() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/searchByClubCountry.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        searchByClubCountryController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Search By club and country");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showListDetails(List<Player> playerList) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/showListDetails.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        showListDetailsController controller = loader.getController();
+        controller.setPlayerList(playerList);
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Player Details");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
     
     public static void main(String[] args) {
         try {

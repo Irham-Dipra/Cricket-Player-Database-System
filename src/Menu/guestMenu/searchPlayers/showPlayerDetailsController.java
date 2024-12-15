@@ -11,7 +11,6 @@ import Menu.Main;
 public class showPlayerDetailsController {
 
     private Main main;
-    private Player player;
     
     @FXML
     private Label nameLabel;
@@ -47,14 +46,13 @@ public class showPlayerDetailsController {
     }
     public void setPlayer(Player player)
     {
-        this.player = player;
         nameLabel.setText(player.getName());
         clubLabel.setText(player.getClub());
         countryLabel.setText(player.getCountry());
         positionLabel.setText(player.getPosition());
         salaryLabel.setText(String.valueOf(player.getSalary()));
         ageLabel.setText(String.valueOf(player.getAge()));
-        jerseyLabel.setText(String.valueOf(player.getJerseyNumber()));
+        jerseyLabel.setText(String.valueOf(player.getJersey()));
         heightLabel.setText(String.valueOf(player.getHeight()));
     }
 }
