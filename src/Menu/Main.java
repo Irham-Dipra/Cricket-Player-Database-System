@@ -19,6 +19,10 @@ import Menu.guestMenu.searchClubs.searchByMaxSalaryController;
 import Menu.guestMenu.searchClubs.showClubsListDetailsController;
 import Menu.guestMenu.searchClubs.searchByMaxHeightController;
 import Menu.guestMenu.searchClubs.searchByMaxAgeController;
+import Menu.guestMenu.searchPlayers.countryPlayerCountController;
+import Menu.guestMenu.searchClubs.searchTotalSalaryController;
+import Menu.guestMenu.searchClubs.showTotalSalaryController;
+import java.util.Map;
 import Phase1.phase1Main;
 import Phase1.Player;
 import java.util.List;
@@ -281,6 +285,56 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Max Salary");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showCountryPlayerCount(Map <String, Integer> countryMap) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchPlayers/countryPlayerCount.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        countryPlayerCountController controller = loader.getController();
+        controller.setCountryList(countryMap);
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Country Player Count");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showSearchTotalSalary() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchClubs/searchTotalSalary.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        searchTotalSalaryController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Search Total Salary");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showTotalSalary(String clubName, int salary) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("guestMenu/searchClubs/showTotalSalary.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        showTotalSalaryController controller = loader.getController();
+        controller.setClubDetails(clubName, salary);
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Total Salary");
         stage.setScene(new Scene(root, 500, 400));
         stage.show();
     }

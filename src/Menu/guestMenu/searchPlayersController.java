@@ -6,6 +6,8 @@ import Menu.Main; // Add this import statement
 // import javafx.scene.control.Label;
 // import javafx.scene.image.Image;
 // import javafx.scene.image.ImageView;
+import Phase1.PlayerList;
+import java.util.Map;
 
 public class searchPlayersController {
     private Main main;
@@ -49,6 +51,12 @@ public class searchPlayersController {
     public void countryPlayerCountClicked(ActionEvent actionEvent)
     {
         System.out.println("country wise player count initiated");
+        Map <String, Integer> countryMap = PlayerList.getCountryWisePlayerCountMap();
+        try {
+            main.showCountryPlayerCount(countryMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void backClicked(ActionEvent actionEvent)
     {

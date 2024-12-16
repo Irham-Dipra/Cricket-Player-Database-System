@@ -188,6 +188,25 @@ public class PlayerList {
         System.out.println("--------------------------------------");
     }
 
+    public static class CountryPlayerCount {
+        private final String country;
+        private final Integer playerCount;
+    
+        public CountryPlayerCount(String country, Integer playerCount) {
+            this.country = country;
+            this.playerCount = playerCount;
+        }
+    
+        public String getCountry() {
+            return country;
+        }
+    
+        public Integer getPlayerCount() {
+            return playerCount;
+        }
+    }
+    
+
     public static List<Player> getMaxSalaryPlayerList(String club)
     {
         int max = -1;

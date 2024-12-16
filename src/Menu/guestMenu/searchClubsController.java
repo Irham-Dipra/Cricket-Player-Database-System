@@ -40,6 +40,11 @@ public class searchClubsController {
     public void totalSalaryClicked(ActionEvent actionEvent)
     {
         System.out.println("total salary initiated");
+        try {
+            main.showSearchTotalSalary();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
     public void backClicked(ActionEvent actionEvent)
     {
