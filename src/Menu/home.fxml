@@ -18,6 +18,8 @@
          <children>
             <Button fx:id="loginGuest" layoutX="181.0" layoutY="100.0" mnemonicParsing="false" onAction="#guestLoginClicked" prefHeight="26.0" prefWidth="153.0" text="Login as guest" />
             <Button fx:id="LoginUser" layoutX="181.0" layoutY="252.0" mnemonicParsing="false" onAction="#userLoginClicked" prefHeight="26.0" prefWidth="153.0" text="Login as user" />
+            <!-- New Exit Button -->
+            <Button fx:id="exit" layoutX="181.0" layoutY="350.0" mnemonicParsing="false" onAction="#exitClicked" prefHeight="26.0" prefWidth="153.0" text="Exit" />
          </children>
       </AnchorPane>
    </children>

@@ -187,11 +187,16 @@ public class phase1Main{
         br.close();
     }
 
-    public static void exitSystem() throws Exception
+    public static void saveData() throws Exception
     {
         BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true));
         PlayerList.appendPlayer(bw);
         bw.close();
+    }
+    
+    public static void exitSystem() throws Exception
+    {
+        saveData();
         System.exit(0);
     }
 
@@ -225,5 +230,6 @@ public class phase1Main{
             else
                 System.out.println("Invalid choice");
         }
+        
     }
 }

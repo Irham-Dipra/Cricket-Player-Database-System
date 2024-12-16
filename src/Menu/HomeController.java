@@ -2,6 +2,7 @@ package Menu;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import Phase1.phase1Main;
 
 
 public class HomeController {
@@ -20,6 +21,16 @@ public class HomeController {
     public void userLoginClicked(ActionEvent actionEvent)
     {
         System.out.println("User Login clicked");
+    }
+    public void exitClicked(ActionEvent actionEvent)
+    {
+        System.out.println("Exit clicked");
+        try {
+            phase1Main.saveData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.exit(0);
     }
     void setMain(Main main) {
         this.main = main;
