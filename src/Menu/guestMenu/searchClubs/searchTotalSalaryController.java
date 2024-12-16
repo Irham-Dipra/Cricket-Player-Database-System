@@ -1,14 +1,11 @@
 package Menu.guestMenu.searchClubs;
 
-import Phase1.PlayerList;
-import Phase1.Player;
+import Phase1.PlayerList; // Ensure this import is correct and the PlayerList class exists
 import javafx.event.ActionEvent;
 import Menu.Main; // Import the Main class for navigation
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-
-import java.util.List;
 
 public class searchTotalSalaryController {
     private Main main;

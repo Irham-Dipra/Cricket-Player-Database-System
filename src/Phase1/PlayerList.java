@@ -16,6 +16,11 @@ public class PlayerList {
         playerList.add(p);
     }
 
+    public static List<Player> getPlayerList()
+    {
+        return playerList;
+    }
+    
     public static void showDetails(Player x)
     {
         System.out.println("-----------------------------");

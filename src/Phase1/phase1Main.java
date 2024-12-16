@@ -186,6 +186,15 @@ public class phase1Main{
         }
         br.close();
     }
+
+    public static void exitSystem() throws Exception
+    {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true));
+        PlayerList.appendPlayer(bw);
+        bw.close();
+        System.exit(0);
+    }
+
     public static void main(String []args) throws Exception {
         setFile();
         while(true)
@@ -210,12 +219,11 @@ public class phase1Main{
                 addPlayer();
             }
             else if(choice == 4)
-                break;
+            {
+                exitSystem();
+            }
             else
                 System.out.println("Invalid choice");
         }
-        BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME, true));
-        PlayerList.appendPlayer(bw);
-        bw.close();
     }
 }
