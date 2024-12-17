@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "Menu.Server",
+            "projectName": "JavaFX Project_510cd737"
+        },
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "Menu.userMenu.Server",
+            "projectName": "JavaFX Project_510cd737"
+        },
+        {
+            "type": "java",
             "name": "phase1Main",
             "request": "launch",
             "mainClass": "Phase1.phase1Main",

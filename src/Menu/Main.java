@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import Menu.guestMenu.guestHomePageController;
 import Menu.guestMenu.searchPlayersController;
@@ -22,15 +23,35 @@ import Menu.guestMenu.searchClubs.searchByMaxAgeController;
 import Menu.guestMenu.searchPlayers.countryPlayerCountController;
 import Menu.guestMenu.searchClubs.searchTotalSalaryController;
 import Menu.guestMenu.searchClubs.showTotalSalaryController;
+import Menu.userMenu.userHomePageController;
 import java.util.Map;
 import Phase1.phase1Main;
 import Phase1.Player;
+import java.io.IOException;
 import java.util.List;
 // import javafx.scene.control.Alert;
 
 public class Main extends Application {
 
     private Stage stage;
+
+    private SocketWrapper socketWrapper;
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public SocketWrapper getSocketWrapper() {
+        return socketWrapper;
+    }
+
+    public void connectToServer() throws IOException {
+        String serverAddress = "127.0.0.1";
+        int serverPort = 8080;
+        socketWrapper = new SocketWrapper(serverAddress, serverPort);
+        new ReadThread(this);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
@@ -58,6 +79,22 @@ public class Main extends Application {
         stage.show();
     }
 
+    public void showUserHomePage(String userName) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu/userHomePage.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        userHomePageController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Home");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
     public void showGuestHomePage() throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
@@ -71,6 +108,22 @@ public class Main extends Application {
         // Set the primary stage
         stage.setTitle("Home");
         stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
+    public void showUserLoginPage() throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("login.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        LoginController controller = loader.getController();
+        controller.setMain(this);
+
+        // Set the primary stage
+        stage.setTitle("Login");
+        stage.setScene(new Scene(root, 400, 250));
         stage.show();
     }
 
@@ -337,6 +390,15 @@ public class Main extends Application {
         stage.setTitle("Total Salary");
         stage.setScene(new Scene(root, 500, 400));
         stage.show();
+    }
+
+    public void showInvalidLoginAlert() {
+        System.out.println("Alert");
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Incorrect Credentials");
+        alert.setHeaderText("Incorrect Credentials");
+        alert.setContentText("The username and password you provided is not correct.");
+        alert.showAndWait();
     }
     
     public static void main(String[] args) {

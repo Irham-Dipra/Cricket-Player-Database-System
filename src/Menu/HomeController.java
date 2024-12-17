@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import Phase1.phase1Main;
+import java.io.IOException;
 
 
 public class HomeController {
@@ -21,6 +22,16 @@ public class HomeController {
     public void userLoginClicked(ActionEvent actionEvent)
     {
         System.out.println("User Login clicked");
+        try {
+            main.connectToServer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            main.showUserLoginPage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void exitClicked(ActionEvent actionEvent)
     {
@@ -32,7 +43,7 @@ public class HomeController {
         }
         System.exit(0);
     }
-    void setMain(Main main) {
+    public void setMain(Main main) {
         this.main = main;
     }
 }
