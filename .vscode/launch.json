@@ -6,6 +6,24 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Controls.Main",
+            "projectName": "JavaFX Project_510cd737",
+            "vmArgs": " --module-path \"C:/Program Files (x86)/Java/javafx-sdk-23.0.1/lib\" --add-modules javafx.fxml,javafx.controls,javafx.graphics"
+
+        },
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "Controls.Server",
+            "projectName": "JavaFX Project_510cd737",
+            "vmArgs": " --module-path \"C:/Program Files (x86)/Java/javafx-sdk-23.0.1/lib\" --add-modules javafx.fxml,javafx.controls,javafx.graphics"
+
+        },
+        {
+            "type": "java",
             "name": "Server",
             "request": "launch",
             "mainClass": "Menu.Server",
