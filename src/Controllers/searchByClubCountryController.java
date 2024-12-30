@@ -1,12 +1,10 @@
 package Controllers;
 import Controls.*;
-import Phase1.PlayerList;
-import Phase1.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import java.util.List;
+import java.util.*;
 
 
 public class searchByClubCountryController {
@@ -24,8 +22,12 @@ public class searchByClubCountryController {
         String club = clubField.getText();
         String country = countryField.getText();
         System.out.println(club + " " + country);
-        List <Player> playerList = PlayerList.getSearchByClubAndCountryList(country, club);
-        PlayerList.showAllPlayers(playerList);
+        ArrayList <Player> playerList = null;
+        try {
+            playerList = main.getPlayersByClubAndCountry(country, club);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         if(playerList.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

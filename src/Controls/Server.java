@@ -3,29 +3,32 @@ package Controls;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Server {
-
+    static Scanner scanner = new Scanner(System.in);
     private ServerSocket serverSocket;
-    public HashMap<String, String> userMap;
+    public static ArrayList<Player> playerList = new ArrayList<>();
+    public static HashMap<String, String> userMap = new HashMap<>();
+    public static HashMap<String, String> imageMap = new HashMap<>();
+    public static HashMap<String, String> initialMap = new HashMap<>();
 
-    Server() {
-        userMap = new HashMap<>();
-        userMap.put("Kolkata Knight Riders", "kkr");
-        userMap.put("Rajasthan Royals", "rr");
-        userMap.put("Delhi Capitals", "dc");
-        userMap.put("Sunrisers Hydrabad", "srh");
-        userMap.put("Gujarat Lions", "gl");
-        userMap.put("Kings XI Punjab", "kxip");
-        userMap.put("Mumbai Indians", "mi");
-        userMap.put("Royal Challengers Bangalore", "rcb");
-        userMap.put("Chennai Super Kings", "csk");
-        userMap.put("Lucknow Super Giants", "lsg");
+    Server() { 
+        try {
+            fileOperations.loadFile(playerList);
+            fileOperations.loadCredentials(userMap);
+            fileOperations.loadImages(imageMap);
+            fileOperations.loadInitial(initialMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             serverSocket = new ServerSocket(8080);
             while (true) {
                 Socket clientSocket = serverSocket.accept();
+                System.out.println("Client connected");
                 serve(clientSocket);
             }
         } catch (Exception e) {

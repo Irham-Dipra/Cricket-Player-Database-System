@@ -1,0 +1,10 @@
+kkr,Kolkata Knight Riders
+rr,Rajasthan Royals
+dc,Delhi Capitals
+srh,Sunrisers Hyderabad
+gt,Gujarat Titans
+pbks,Punjab Kings
+mi,Mumbai Indians
+rcb,Royal Challengers Bengalore
+csk,Chennai Super Kings
+lsg,Lucknow Super Giants

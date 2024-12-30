@@ -9,11 +9,14 @@ public class SocketWrapper {
     private Socket socket;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
+    public String name;
 
-    public SocketWrapper(String s, int port) throws IOException { // used by the client
+    public SocketWrapper(String s, int port, String name) throws IOException { // used by the client
+        System.out.println("Connecting to server...");
         this.socket = new Socket(s, port);
         oos = new ObjectOutputStream(socket.getOutputStream());
         ois = new ObjectInputStream(socket.getInputStream());
+        this.name = name;
     }
 
     public SocketWrapper(Socket s) throws IOException { // used by the server
@@ -28,6 +31,11 @@ public class SocketWrapper {
 
     public void write(Object o) throws IOException {
         oos.writeObject(o);
+    }
+
+    public void flush() throws IOException
+    {
+        oos.flush();
     }
 
     public void closeConnection() throws IOException {

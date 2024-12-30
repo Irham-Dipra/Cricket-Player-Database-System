@@ -4,8 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import Phase1.Player;
-import java.util.List;
+import java.util.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableView;
 import javafx.event.ActionEvent;
@@ -50,7 +49,7 @@ public class showPlayersListDetailsController {
             // new Player("Mohamed Salah", "Egypt", 28, 175, "Liverpool", "Forward", 11, 1000000, true),
             // new Player("Sadio Mane", "Senegal", 28, 175, "Liverpool", "Forward", 10, 1000000, true)
     );
-    public void setPlayerList(List<Player> playerList)
+    public void setPlayerList(ArrayList<Player> playerList)
     {
         for(Player player: playerList)
         {

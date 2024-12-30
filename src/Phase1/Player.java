@@ -17,6 +17,20 @@ public class Player {
         this.salary = salary;
         this.exist = exist;
     }
+
+    public Player(String name)
+    {
+        this.name = name;
+        this.country = "";
+        this.age = -1;
+        this.height = -1;
+        this.club = "";
+        this.position = "";
+        this.number = -1;
+        this.salary = -1;
+        this.exist = -1;
+    }
+
     public String getName()
     {
         return name;

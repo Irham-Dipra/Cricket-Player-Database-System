@@ -1,13 +1,10 @@
 package Controllers;
 import Controls.*;
-import Phase1.PlayerList;
-import Phase1.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-
-import java.util.List;
+import java.util.*;
 
 public class searchByMaxAgeController {
     private Main main;
@@ -30,18 +27,22 @@ public class searchByMaxAgeController {
         }
 
         // Fetch the list of players with the maximum salary for the given club
-        List<Player> maxSalaryPlayers = PlayerList.getMaxAgePlayerList(clubName);
-
-        if (maxSalaryPlayers == null || maxSalaryPlayers.isEmpty()) {
+        ArrayList<Player> maxAgePlayers = null;
+        try {
+            maxAgePlayers = main.getPlayersWithMaxAge(clubName);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        if (maxAgePlayers == null || maxAgePlayers.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("No players found for the given club or no players with a maximum salary!");
             alert.showAndWait();
         } else {
-            PlayerList.showAllPlayers(maxSalaryPlayers); // Display players (implement this in PlayerList)
             try {
-                main.showClubsListDetails(maxSalaryPlayers); // Navigate to a screen displaying the players
+                main.showClubsListDetails(maxAgePlayers); // Navigate to a screen displaying the players
             } catch (Exception e) {
                 e.printStackTrace();
             }

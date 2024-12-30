@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import Phase1.Player;
 import java.util.List;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableView;

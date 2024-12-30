@@ -1,13 +1,10 @@
 package Controllers;
 import Controls.*;
-import Phase1.PlayerList;
-import Phase1.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-
-import java.util.List;
+import java.util.*;
 
 public class searchBySalaryController {
     private Main main;
@@ -36,7 +33,12 @@ public class searchBySalaryController {
             }
 
             // Fetch players within the salary range
-            List<Player> players = PlayerList.getSearchBySalary(minSalary, maxSalary);
+            ArrayList<Player> players = null;
+            try {
+                players = main.getPlayersBySalary(minSalary, maxSalary);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             if (players.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -45,7 +47,6 @@ public class searchBySalaryController {
                 alert.setContentText("No players found in the given salary range!");
                 alert.showAndWait();
             } else {
-                PlayerList.showAllPlayers(players); // Display the list of players (implement this method in PlayerList)
                 try {
                     main.showPlayersListDetails(players); // Navigate to a screen displaying the player list
                 } catch (Exception e) {

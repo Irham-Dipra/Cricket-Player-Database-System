@@ -6,18 +6,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import Controllers.*;
+import DataModels.club;
 import java.util.Map;
-import Phase1.phase1Main;
-import Phase1.Player;
 import java.io.IOException;
-import java.util.List;
-// import javafx.scene.control.Alert;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main extends Application {
 
     private Stage stage;
-
-    private SocketWrapper socketWrapper;
+    public static HashMap<String, String> userMap;
+    public static HashMap<String, String> imageMap;
+    public SocketWrapper socketWrapper;
+    public String clubName;
 
     public Stage getStage() {
         return stage;
@@ -30,19 +31,29 @@ public class Main extends Application {
     public void connectToServer() throws IOException {
         String serverAddress = "127.0.0.1";
         int serverPort = 8080;
-        socketWrapper = new SocketWrapper(serverAddress, serverPort);
+        socketWrapper = new SocketWrapper(serverAddress, serverPort, "ClientSocketWrapper");
+        System.out.println("socketWrapper created" + socketWrapper.name);
         new ReadThread(this);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
+        connectToServer();
         showHomePage();
         // Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         // primaryStage.setTitle("Hello World");
         // primaryStage.setScene(new Scene(root, 500, 400));
         // primaryStage.setResizable(false);
         // primaryStage.show();
+    }
+
+    public void setClubName(String clubName) {
+        this.clubName = clubName;
+    }
+
+    public String getClubName() {
+        return clubName;
     }
 
     public void showHomePage() throws Exception {
@@ -61,7 +72,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showUserHomePage(String userName) throws Exception
+    public void showUserHomePage(String userName, ArrayList <Player> playerList) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/userHomePage.fxml"));
@@ -70,6 +81,7 @@ public class Main extends Application {
         // Loading the controller
         userHomePageController controller = loader.getController();
         controller.setMain(this);
+        controller.init(playerList);
 
         // Set the primary stage
         stage.setTitle("Home");
@@ -174,6 +186,59 @@ public class Main extends Application {
         stage.show();
     }
 
+    public Player getPlayerByName(String name) throws Exception
+    {
+        System.out.println("ashche");
+        System.out.println("socketWrapper: " + socketWrapper.name);
+        socketWrapper.write("getPlayerByName");
+        socketWrapper.write(name);
+        return (Player) socketWrapper.read();
+    }
+
+    public ArrayList<Player> getPlayersByPosition(String position) throws Exception
+    {
+        socketWrapper.write("getPlayersByPosition");
+        socketWrapper.write(position);
+        return (ArrayList <Player>) socketWrapper.read();
+    }
+
+    public ArrayList<Player> getPlayersBySalary(int min, int max) throws Exception
+    {
+        socketWrapper.write("getPlayersBySalary");
+        socketWrapper.write(min);
+        socketWrapper.write(max);
+        return (ArrayList <Player>) socketWrapper.read();
+    }
+
+    public ArrayList<Player> getPlayersByClubAndCountry(String club, String country) throws Exception
+    {
+        socketWrapper.write("getPlayersByClubAndCountry");
+        socketWrapper.write(club);
+        socketWrapper.write(country);
+        return (ArrayList <Player>) socketWrapper.read();
+    }
+
+    public ArrayList<Player> getPlayersWithMaxSalary(String clubname) throws Exception
+    {
+        socketWrapper.write("getPlayersWithMaxSalary");
+        socketWrapper.write(clubname);
+        return (ArrayList <Player>) socketWrapper.read();
+    }
+
+    public ArrayList<Player> getPlayersWithMaxAge(String clubname) throws Exception
+    {
+        socketWrapper.write("getPlayersWithMaxAge");
+        socketWrapper.write(clubname);
+        return (ArrayList <Player>) socketWrapper.read();
+    }
+
+    public ArrayList<Player> getPlayersWithMaxHeight(String clubname) throws Exception
+    {
+        socketWrapper.write("getPlayersWithMaxHeight");
+        socketWrapper.write(clubname);
+        return (ArrayList <Player>) socketWrapper.read();
+    }
+
     public void showPlayerDetails(Player player) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
@@ -207,7 +272,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showPlayersListDetails(List<Player> playerList) throws Exception
+    public void showPlayersListDetails(ArrayList<Player> playerList) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/showPlayersListDetails.fxml"));
@@ -224,7 +289,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showClubsListDetails(List<Player> playerList) throws Exception
+    public void showClubsListDetails(ArrayList<Player> playerList) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/showClubsListDetails.fxml"));
@@ -374,6 +439,15 @@ public class Main extends Application {
         stage.show();
     }
 
+    public void showAlert(String head, String msg)
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(head);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
     public void showInvalidLoginAlert() {
         System.out.println("Alert");
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -384,13 +458,7 @@ public class Main extends Application {
     }
     
     public static void main(String[] args) {
-        try {
-            phase1Main.setFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         launch(args);
-
     }
 
 }

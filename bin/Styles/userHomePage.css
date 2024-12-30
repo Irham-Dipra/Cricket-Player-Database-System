@@ -1,0 +1,27 @@
+.table-view {
+    -fx-font-size: 14px;
+    font-size: 14px;
+    -fx-alignment: CENTER;
+    -fx-table-cell-border-color: #bdc3c7;
+}
+
+.table-column-header {
+    -fx-background-color: #34495e;
+    background-color: #34495e;
+    -fx-text-fill: #ecf0f1;
+    -fx-font-size: 16px;
+    font-size: 16px;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+.button {
+    -fx-cursor: hand;
+    cursor: pointer;
+    -fx-border-radius: 5;
+    border-radius: 5px;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+    padding: 8px 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4);
+}

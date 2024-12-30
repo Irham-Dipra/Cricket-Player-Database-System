@@ -372,4 +372,30 @@ public class PlayerList {
             }
         }
     }
+
+    public static ArrayList<Player> getClubPlayers(String clubName)
+    {
+        ArrayList<Player> clubPlayers = new ArrayList<>();
+        for(Player player: playerList)
+        {
+            if(player.club.equals(clubName))
+            {
+                clubPlayers.add(player);
+            }
+        }
+        return clubPlayers;
+    }
+
+    public static int getClubNetWorth(String clubName)
+    {
+        int netWorth = 0;
+        for(Player player: playerList)
+        {
+            if(player.club.equals(clubName))
+            {
+                netWorth += player.salary;
+            }
+        }
+        return netWorth;
+    }
 }

@@ -5,8 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import Phase1.Player;
-
 public class showPlayerDetailsController {
 
     private Main main;

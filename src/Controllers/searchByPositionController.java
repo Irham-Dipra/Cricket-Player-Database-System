@@ -1,12 +1,10 @@
 package Controllers;
 import Controls.*;
-import Phase1.PlayerList;
-import Phase1.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import java.util.List;
+import java.util.*;
 
 
 public class searchByPositionController {
@@ -30,7 +28,12 @@ public class searchByPositionController {
         }
 
         // Get the list of players by position
-        List<Player> playerList = PlayerList.getSearchByPosition(position);
+        ArrayList<Player> playerList = null;
+        try {
+            playerList = main.getPlayersByPosition(position);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
         if (playerList == null || playerList.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -40,7 +43,6 @@ public class searchByPositionController {
             alert.showAndWait();
         } else {
             // Show player details (if you want to display in a TableView or other UI element)
-            PlayerList.showAllPlayers(playerList);
             try {
                 main.showPlayersListDetails(playerList); // Show the list of players (this can be customized)
             } catch (Exception e) {

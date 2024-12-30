@@ -1,8 +1,10 @@
 package Controls;
 import DTO.*;
 
+import Controllers.*;
 import javafx.application.Platform;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ReadThread implements Runnable {
     private final Thread thr;
@@ -17,19 +19,24 @@ public class ReadThread implements Runnable {
     public void run() {
         try {
             while (true) {
+                System.out.println("Client is running");
                 Object o = main.getSocketWrapper().read();
                 if (o != null) {
                     if (o instanceof LoginDTO) {
                         LoginDTO loginDTO = (LoginDTO) o;
                         System.out.println(loginDTO.getUserName());
                         System.out.println(loginDTO.isStatus());
+                        String clubName = (String) main.socketWrapper.read();
+                        ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
+                        listOperations.showAllPlayers(playerList);
                         // the following is necessary to update JavaFX UI components from user created threads
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
                                 if (loginDTO.isStatus()) {
                                     try {
-                                        main.showUserHomePage(loginDTO.getUserName());
+                                        main.setClubName(Server.initialMap.get(loginDTO.getUserName()));
+                                        main.showUserHomePage(loginDTO.getUserName(), playerList);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -39,6 +46,70 @@ public class ReadThread implements Runnable {
 
                             }
                         });
+                    }
+                    else if(o instanceof String)
+                    {
+                        String s = (String) o;
+                        if(s.equals("Player"))
+                        {
+                            Player player = (Player) main.getSocketWrapper().read();
+                            if(player == null)
+                            {
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            main.showAlert("Invalid Player", "No player found with this name.");
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            main.showPlayerDetails(player);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                        else if(s.equals("List"))
+                        {
+                            ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
+                            if(playerList == null || playerList.isEmpty())
+                            {
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            main.showAlert("Error", "No players found");
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            main.showClubsListDetails(playerList);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                            }
+                        }
                     }
                 }
             }

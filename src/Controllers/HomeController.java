@@ -24,11 +24,6 @@ public class HomeController {
     {
         System.out.println("User Login clicked");
         try {
-            main.connectToServer();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             main.showUserLoginPage();
         } catch (Exception e) {
             e.printStackTrace();

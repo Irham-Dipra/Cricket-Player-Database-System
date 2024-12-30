@@ -1,7 +1,7 @@
 package Controllers;
+import java.io.IOException;
+
 import Controls.*;
-import Phase1.PlayerList;
-import Phase1.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,24 +16,25 @@ public class searchByNameController {
     {
         System.out.println("search button clicked");
         String name = nameField.getText();
-        Player player = PlayerList.getSearchByNamePlayer(name);
-        if(player == null)
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Player not found!");
-            alert.showAndWait();
+        try {
+            main.socketWrapper.write("getPlayerByName");
+            main.socketWrapper.write(name);
+            main.socketWrapper.flush();
+        } catch (IOException e) {
+            main.showAlert("Error", "Network Error: Unable to send data. Please try again.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            main.showAlert("Error", "An unexpected error occurred.");
+            e.printStackTrace();
         }
-        else
-        {
-            PlayerList.showDetails(player);
-            try {
-                main.showPlayerDetails(player);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        // else
+        // {
+        //     try {
+        //         main.showPlayerDetails(player);
+        //     } catch (Exception e) {
+        //         e.printStackTrace();
+        //     }
+        // }
     }
     public void backClicked(ActionEvent actionEvent)
     {
