@@ -109,6 +109,22 @@ public class showClubListDetailsController {
                 e.printStackTrace();
             }
         }
+        else if(searchType.equals("searchMaxAge"))
+        {
+            try {
+                main.showMaxAge();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(searchType.equals("searchMaxHeight"))
+        {
+            try {
+                main.showMaxHeight();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void setSearchType(String searchType) {

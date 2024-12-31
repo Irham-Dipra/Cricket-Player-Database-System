@@ -1,4 +1,6 @@
 package Controllers;
+import java.io.IOException;
+
 import Controls.*;
 import Phase1.PlayerList; // Ensure this import is correct and the PlayerList class exists
 import javafx.event.ActionEvent;
@@ -27,11 +29,15 @@ public class searchTotalSalaryController {
             return;
         }
 
-        // Fetch the list of players with the maximum salary for the given club
-        int total = PlayerList.getTotalSalary(clubName);
         try {
-            main.showTotalSalary(clubName, total); // Navigate to a screen displaying the players
+            main.socketWrapper.write("getTotalSalary");
+            main.socketWrapper.write(clubName);
+            main.socketWrapper.flush();
+        } catch (IOException e) {
+            main.showAlert("Error", "Network Error: Unable to send data. Please try again.");
+            e.printStackTrace();
         } catch (Exception e) {
+            main.showAlert("Error", "An unexpected error occurred.");
             e.printStackTrace();
         }
 

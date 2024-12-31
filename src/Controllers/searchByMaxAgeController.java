@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 import java.util.*;
 
 public class searchByMaxAgeController {
@@ -25,27 +27,16 @@ public class searchByMaxAgeController {
             alert.showAndWait();
             return;
         }
-
-        // Fetch the list of players with the maximum salary for the given club
-        ArrayList<Player> maxAgePlayers = null;
         try {
-            maxAgePlayers = main.getPlayersWithMaxAge(clubName);
-        } catch (Exception e) {
-            // TODO: handle exception
+            main.socketWrapper.write("getPlayersWithMaxAge");
+            main.socketWrapper.write(clubName);
+            main.socketWrapper.flush();
+        } catch (IOException e) {
+            main.showAlert("Error", "Network Error: Unable to send data. Please try again.");
             e.printStackTrace();
-        }
-        if (maxAgePlayers == null || maxAgePlayers.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("No players found for the given club or no players with a maximum salary!");
-            alert.showAndWait();
-        } else {
-            try {
-                main.showClubsListDetails(maxAgePlayers); // Navigate to a screen displaying the players
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            main.showAlert("Error", "An unexpected error occurred.");
+            e.printStackTrace();
         }
     }
 

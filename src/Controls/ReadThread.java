@@ -113,6 +113,21 @@ public class ReadThread implements Runnable {
                                 });
                             }
                         }
+                        else if(s.equals("showTotalSalary"))
+                        {
+                            String club = (String) main.getSocketWrapper().read();
+                            int total = (int) main.getSocketWrapper().read();
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        main.showTotalSalary(club, total);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
                         else if(s.equals("buyPlayerList"))
                         {
                             ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();

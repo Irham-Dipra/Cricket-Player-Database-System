@@ -234,22 +234,22 @@ public class listOperations {
         }
     }
 
-    // public static int getTotalSalary(ArrayList<Player> playerList, String club)
-    // {
-    //     int total = -1;
-    //     for(int i = 0;i < playerList.size();i++)
-    //     {
-    //         Player p = playerList.get(i);
-    //         if((p.club).equals(club))
-    //         {
-    //             if(total == -1)
-    //                 total = p.salary;
-    //             else
-    //                 total += p.salary;
-    //         }
-    //     }
-    //     return total;
-    // }
+    public static int getTotalSalary(ArrayList<Player> playerList, String club)
+    {
+        int total = -1;
+        for(int i = 0;i < playerList.size();i++)
+        {
+            Player p = playerList.get(i);
+            if((p.club).equals(club))
+            {
+                if(total == -1)
+                    total = p.salary;
+                else
+                    total += p.salary;
+            }
+        }
+        return total;
+    }
 
     // public static int getClubNetWorth(ArrayList<Player> playerList, String clubName)
     // {
