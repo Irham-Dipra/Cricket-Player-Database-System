@@ -237,7 +237,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showClubListDetails(ArrayList<Player> playerList) throws Exception
+    public void showClubListDetails(ArrayList<Player> playerList, String searchType) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/showClubListDetails.fxml"));
@@ -246,6 +246,7 @@ public class Main extends Application {
         // Loading the controller
         showClubListDetailsController controller = loader.getController();
         controller.setPlayerList(playerList);
+        controller.setSearchType(searchType);
         controller.setMain(this);
 
         // Set the primary stage

@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 public class showClubListDetailsController {
 
     private Main main;
+    private String searchType;
 
     @FXML
     private TableView<Player> table;
@@ -76,10 +77,17 @@ public class showClubListDetailsController {
     public void backClicked(ActionEvent actionEvent)
     {
         System.out.println("back button initiated");
-        try {
-            main.searchPlayersMenu();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(searchType.equals("searchClubCountry"))
+        {
+            try {
+                main.showSearchByClubCountry();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
     }
 }

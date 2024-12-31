@@ -54,6 +54,7 @@ public class ReadThreadServer implements Runnable {
                             String country = (String) socketWrapper.read();
                             socketWrapper.write("List");
                             socketWrapper.write(listOperations.getPlayersByClubCountry(Server.playerList,club,country));
+                            socketWrapper.write("searchClubCountry");
                             socketWrapper.flush();
                         }
                         // else if(s.equals("getPlayersByPosition"))
