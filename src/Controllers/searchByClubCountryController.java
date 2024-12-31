@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 import java.util.*;
 
 
@@ -22,27 +24,17 @@ public class searchByClubCountryController {
         String club = clubField.getText();
         String country = countryField.getText();
         System.out.println(club + " " + country);
-        ArrayList <Player> playerList = null;
         try {
-            playerList = main.getPlayersByClubAndCountry(country, club);
+            main.socketWrapper.write("getPlayersByClubAndCountry");
+            main.socketWrapper.write(club);
+            main.socketWrapper.write(country);
+            main.socketWrapper.flush();
+        } catch (IOException e) {
+            main.showAlert("Error", "Network Error: Unable to send data. Please try again.");
+            e.printStackTrace();
         } catch (Exception e) {
-            // TODO: handle exception
-        }
-        if(playerList.isEmpty())
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Player not found!");
-            alert.showAndWait();
-        }
-        else
-        {
-            try {
-                main.showPlayersListDetails(playerList);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            main.showAlert("Error", "An unexpected error occurred.");
+            e.printStackTrace();
         }
     }
 

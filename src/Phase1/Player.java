@@ -28,7 +28,7 @@ public class Player {
         this.position = "";
         this.number = -1;
         this.salary = -1;
-        this.exist = -1;
+        this.exist = false;
     }
 
     public String getName()

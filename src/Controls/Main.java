@@ -186,59 +186,6 @@ public class Main extends Application {
         stage.show();
     }
 
-    public Player getPlayerByName(String name) throws Exception
-    {
-        System.out.println("ashche");
-        System.out.println("socketWrapper: " + socketWrapper.name);
-        socketWrapper.write("getPlayerByName");
-        socketWrapper.write(name);
-        return (Player) socketWrapper.read();
-    }
-
-    public ArrayList<Player> getPlayersByPosition(String position) throws Exception
-    {
-        socketWrapper.write("getPlayersByPosition");
-        socketWrapper.write(position);
-        return (ArrayList <Player>) socketWrapper.read();
-    }
-
-    public ArrayList<Player> getPlayersBySalary(int min, int max) throws Exception
-    {
-        socketWrapper.write("getPlayersBySalary");
-        socketWrapper.write(min);
-        socketWrapper.write(max);
-        return (ArrayList <Player>) socketWrapper.read();
-    }
-
-    public ArrayList<Player> getPlayersByClubAndCountry(String club, String country) throws Exception
-    {
-        socketWrapper.write("getPlayersByClubAndCountry");
-        socketWrapper.write(club);
-        socketWrapper.write(country);
-        return (ArrayList <Player>) socketWrapper.read();
-    }
-
-    public ArrayList<Player> getPlayersWithMaxSalary(String clubname) throws Exception
-    {
-        socketWrapper.write("getPlayersWithMaxSalary");
-        socketWrapper.write(clubname);
-        return (ArrayList <Player>) socketWrapper.read();
-    }
-
-    public ArrayList<Player> getPlayersWithMaxAge(String clubname) throws Exception
-    {
-        socketWrapper.write("getPlayersWithMaxAge");
-        socketWrapper.write(clubname);
-        return (ArrayList <Player>) socketWrapper.read();
-    }
-
-    public ArrayList<Player> getPlayersWithMaxHeight(String clubname) throws Exception
-    {
-        socketWrapper.write("getPlayersWithMaxHeight");
-        socketWrapper.write(clubname);
-        return (ArrayList <Player>) socketWrapper.read();
-    }
-
     public void showPlayerDetails(Player player) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
@@ -258,6 +205,7 @@ public class Main extends Application {
 
     public void showSearchByClubCountry() throws Exception
     {
+        System.out.println("main e ashche search by club country");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/searchByClubCountry.fxml"));
         Parent root = loader.load();
@@ -289,14 +237,14 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showClubsListDetails(ArrayList<Player> playerList) throws Exception
+    public void showClubListDetails(ArrayList<Player> playerList) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Scenes/showClubsListDetails.fxml"));
+        loader.setLocation(getClass().getResource("/Scenes/showClubListDetails.fxml"));
         Parent root = loader.load();
 
         // Loading the controller
-        showClubsListDetailsController controller = loader.getController();
+        showClubListDetailsController controller = loader.getController();
         controller.setPlayerList(playerList);
         controller.setMain(this);
 

@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.event.ActionEvent;
 
 
-public class showClubsListDetailsController {
+public class showClubListDetailsController {
 
     private Main main;
 
@@ -77,7 +77,7 @@ public class showClubsListDetailsController {
     {
         System.out.println("back button initiated");
         try {
-            main.searchClubsMenu();
+            main.searchPlayersMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }

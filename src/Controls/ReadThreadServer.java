@@ -47,6 +47,15 @@ public class ReadThreadServer implements Runnable {
                             socketWrapper.write(player);
                             socketWrapper.flush();
                         }
+                        else if(s.equals("getPlayersByClubAndCountry"))
+                        {
+                            System.out.println("server e ashche getPlayersByClubAndCountry");
+                            String club = (String) socketWrapper.read();
+                            String country = (String) socketWrapper.read();
+                            socketWrapper.write("List");
+                            socketWrapper.write(listOperations.getPlayersByClubCountry(Server.playerList,club,country));
+                            socketWrapper.flush();
+                        }
                         // else if(s.equals("getPlayersByPosition"))
                         // {
                         //     String position = (String) socketWrapper.read();
@@ -57,12 +66,6 @@ public class ReadThreadServer implements Runnable {
                         //     int min = (int) socketWrapper.read();
                         //     int max = (int) socketWrapper.read();
                         //     socketWrapper.write(listOperations.getPlayersBySalary(Server.playerList,min,max));
-                        // }
-                        // else if(s.equals("getPlayersByClubAndCountry"))
-                        // {
-                        //     String club = (String) socketWrapper.read();
-                        //     String country = (String) socketWrapper.read();
-                        //     socketWrapper.write(listOperations.getPlayersByClubCountry(Server.playerList,club,country));
                         // }
                         // else if(s.equals("getClubPlayerList"))
                         // {

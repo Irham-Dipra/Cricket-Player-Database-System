@@ -83,6 +83,7 @@ public class ReadThread implements Runnable {
                         }
                         else if(s.equals("List"))
                         {
+                            System.out.println("client list paise");
                             ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
                             if(playerList == null || playerList.isEmpty())
                             {
@@ -103,7 +104,7 @@ public class ReadThread implements Runnable {
                                     @Override
                                     public void run() {
                                         try {
-                                            main.showClubsListDetails(playerList);
+                                            main.showClubListDetails(playerList);
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
