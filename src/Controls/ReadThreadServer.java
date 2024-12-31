@@ -57,11 +57,14 @@ public class ReadThreadServer implements Runnable {
                             socketWrapper.write("searchClubCountry");
                             socketWrapper.flush();
                         }
-                        // else if(s.equals("getPlayersByPosition"))
-                        // {
-                        //     String position = (String) socketWrapper.read();
-                        //     socketWrapper.write(listOperations.getSearchByPosition(Server.playerList,position));
-                        // }
+                        else if(s.equals("getPlayersByPosition"))
+                        {
+                            String position = (String) socketWrapper.read();
+                            socketWrapper.write("List");
+                            socketWrapper.write(listOperations.getSearchByPosition(Server.playerList,position));
+                            socketWrapper.write("searchPosition");
+                            socketWrapper.flush();
+                        }
                         // else if(s.equals("getPlayersBySalary"))
                         // {
                         //     int min = (int) socketWrapper.read();

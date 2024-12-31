@@ -85,6 +85,14 @@ public class showClubListDetailsController {
                 e.printStackTrace();
             }
         }
+        else if(searchType.equals("searchPosition"))
+        {
+            try {
+                main.showSearchByPosition();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void setSearchType(String searchType) {

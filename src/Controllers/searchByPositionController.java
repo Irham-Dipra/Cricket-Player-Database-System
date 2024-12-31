@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 import java.util.*;
 
 
@@ -26,28 +28,16 @@ public class searchByPositionController {
             alert.showAndWait();
             return;
         }
-
-        // Get the list of players by position
-        ArrayList<Player> playerList = null;
         try {
-            playerList = main.getPlayersByPosition(position);
-        } catch (Exception e) {
+            main.socketWrapper.write("getPlayersByPosition"); // Send the request to the server
+            main.socketWrapper.write(position);
+            main.socketWrapper.flush();
+        } catch (IOException e) {
+            main.showAlert("Error", "Network Error: Unable to send data. Please try again.");
             e.printStackTrace();
-        }
-        
-        if (playerList == null || playerList.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("No players found for the given position!");
-            alert.showAndWait();
-        } else {
-            // Show player details (if you want to display in a TableView or other UI element)
-            try {
-                main.showPlayersListDetails(playerList); // Show the list of players (this can be customized)
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            main.showAlert("Error", "An unexpected error occurred.");
+            e.printStackTrace();
         }
     }
 
