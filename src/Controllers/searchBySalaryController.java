@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 import java.util.*;
 
 public class searchBySalaryController {
@@ -32,26 +34,17 @@ public class searchBySalaryController {
                 return;
             }
 
-            // Fetch players within the salary range
-            ArrayList<Player> players = null;
             try {
-                players = main.getPlayersBySalary(minSalary, maxSalary);
-            } catch (Exception e) {
+                main.socketWrapper.write("getPlayersBySalary");
+                main.socketWrapper.write(minSalary);
+                main.socketWrapper.write(maxSalary);
+                main.socketWrapper.flush();
+            } catch (IOException e) {
+                main.showAlert("Error", "Network Error: Unable to send data. Please try again.");
                 e.printStackTrace();
-            }
-
-            if (players.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText(null);
-                alert.setContentText("No players found in the given salary range!");
-                alert.showAndWait();
-            } else {
-                try {
-                    main.showPlayersListDetails(players); // Navigate to a screen displaying the player list
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            } catch (Exception e) {
+                main.showAlert("Error", "An unexpected error occurred.");
+                e.printStackTrace();
             }
         } catch (NumberFormatException e) {
             // Handle invalid numeric input

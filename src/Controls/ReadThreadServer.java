@@ -65,21 +65,27 @@ public class ReadThreadServer implements Runnable {
                             socketWrapper.write("searchPosition");
                             socketWrapper.flush();
                         }
-                        // else if(s.equals("getPlayersBySalary"))
-                        // {
-                        //     int min = (int) socketWrapper.read();
-                        //     int max = (int) socketWrapper.read();
-                        //     socketWrapper.write(listOperations.getPlayersBySalary(Server.playerList,min,max));
-                        // }
+                        else if(s.equals("getPlayersBySalary"))
+                        {
+                            int min = (int) socketWrapper.read();
+                            int max = (int) socketWrapper.read();
+                            socketWrapper.write("List");
+                            socketWrapper.write(listOperations.getPlayersBySalary(Server.playerList,min,max));
+                            socketWrapper.write("searchSalary");
+                            socketWrapper.flush();
+                        }
+                        else if(s.equals("getPlayersWithMaxSalary"))
+                        {
+                            String club = (String) socketWrapper.read();
+                            socketWrapper.write("List");
+                            socketWrapper.write(listOperations.getMaxSalaryPlayerList(Server.playerList,club));
+                            socketWrapper.write("searchMaxSalary");
+                            socketWrapper.flush();
+                        }
                         // else if(s.equals("getClubPlayerList"))
                         // {
                         //     String club = (String) socketWrapper.read();
                         //     socketWrapper.write(listOperations.getClubPlayerList(Server.playerList,club));
-                        // }
-                        // else if(s.equals("getPlayersWithMaxSalary"))
-                        // {
-                        //     String club = (String) socketWrapper.read();
-                        //     socketWrapper.write(listOperations.getMaxSalaryPlayerList(Server.playerList,club));
                         // }
                         // else if(s.equals("getPlayersWithMaxAge"))
                         // {

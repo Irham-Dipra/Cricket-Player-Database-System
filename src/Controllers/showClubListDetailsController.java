@@ -93,6 +93,22 @@ public class showClubListDetailsController {
                 e.printStackTrace();
             }
         }
+        else if(searchType.equals("searchSalary"))
+        {
+            try {
+                main.showSearchBySalary();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(searchType.equals("searchMaxSalary"))
+        {
+            try {
+                main.showMaxSalary();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void setSearchType(String searchType) {
