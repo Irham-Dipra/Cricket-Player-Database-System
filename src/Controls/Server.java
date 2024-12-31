@@ -11,6 +11,7 @@ public class Server {
     static Scanner scanner = new Scanner(System.in);
     private ServerSocket serverSocket;
     public static ArrayList<Player> playerList = new ArrayList<>();
+    public static ArrayList<Player> buyPlayerList = new ArrayList<>();
     public static HashMap<String, String> userMap = new HashMap<>();
     public static HashMap<String, String> imageMap = new HashMap<>();
     public static HashMap<String, String> initialMap = new HashMap<>();

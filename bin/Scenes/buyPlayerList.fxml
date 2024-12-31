@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.userHomePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.buyPlayerListController">
    <children>
       <TableView fx:id="playersTable" layoutX="13.0" layoutY="85.0" prefHeight="296.0" prefWidth="572.0">
         <columns>
@@ -16,6 +16,6 @@
           <TableColumn fx:id="actionColumn" prefWidth="270" text="Actions" />
         </columns>
       </TableView>
-      <Button fx:id="buy" layoutX="150.0" layoutY="44.0" mnemonicParsing="false" onAction="#buyClicked" text="Buy" />
+      <Button fx:id="back" layoutX="274.0" layoutY="34.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
    </children>
 </AnchorPane>

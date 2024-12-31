@@ -2,16 +2,16 @@ package Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import Controls.*;
-import java.util.ArrayList;
 import java.io.IOException;
+import java.util.*;
+
+import Controls.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class userHomePageController {
+public class buyPlayerListController {
 
     public Main main;
 
@@ -36,12 +36,12 @@ public class userHomePageController {
         // Set up the action column for the buttons
         actionColumn.setCellFactory(param -> new TableCell<>() {
             private final Button detailsButton = new Button("Details");
-            private final Button sellButton = new Button("Sell");
+            private final Button buyButton = new Button("Buy");
 
             {
                 // Button styles
                 detailsButton.setStyle("-fx-background-color: #1abc9c; -fx-text-fill: white; -fx-font-weight: bold;");
-                sellButton.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;");
+                buyButton.setStyle("-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;");
 
                 // Action for Details button
                 detailsButton.setOnAction(event -> {
@@ -49,10 +49,10 @@ public class userHomePageController {
                     showPlayerDetails(player);
                 });
 
-                // Action for Sell button
-                sellButton.setOnAction(event -> {
+                // Action for Buy button
+                buyButton.setOnAction(event -> {
                     Player player = getTableView().getItems().get(getIndex());
-                    sellPlayer(player);
+                    buyPlayer(player);
                 });
             }
 
@@ -64,7 +64,7 @@ public class userHomePageController {
 
             private HBox createActionButtons() {
                 HBox hbox = new HBox(10);
-                hbox.getChildren().addAll(detailsButton, sellButton);
+                hbox.getChildren().addAll(detailsButton, buyButton);
                 return hbox;
             }
         });
@@ -73,13 +73,14 @@ public class userHomePageController {
         loadPlayers(list);
     }
 
-    // Method to load sample players
+    // Method to load players
     private void loadPlayers(ArrayList<Player> list) {
+        listOperations.showAllPlayers(list);
         playerList.addAll(list);
         playersTable.setItems(playerList);
     }
 
-    // Show player details (this is just a placeholder)
+    // Show player details
     private void showPlayerDetails(Player player) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Player Details");
@@ -88,33 +89,34 @@ public class userHomePageController {
         alert.showAndWait();
     }
 
-    // Sell player (just a placeholder)
-    private void sellPlayer(Player player) {
+    // Buy player
+    private void buyPlayer(Player player) {
         playerList.remove(player);
         try {
-            main.getSocketWrapper().write("sellPlayer");
+            main.getSocketWrapper().write("playerBought");
             main.getSocketWrapper().write(player);
+            main.getSocketWrapper().write(main.getClubName());
             main.getSocketWrapper().flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Player Sold");
-        alert.setHeaderText("Player Sold");
-        alert.setContentText(player.getName() + " has been sold.");
+        alert.setTitle("Player Bought");
+        alert.setHeaderText("Player Bought");
+        alert.setContentText(player.getName() + " has been bought.");
         alert.showAndWait();
     }
 
-    public void buyClicked(ActionEvent actionEvent) {
-        System.out.println("Buy button clicked");
+    public void backClicked() {
+        System.out.println("Back button clicked");
         try {
-            main.getSocketWrapper().write("buyPlayers");
+            main.getSocketWrapper().write("backToClubList");
+            main.getSocketWrapper().write(main.getClubName());
             main.getSocketWrapper().flush();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     public void setMain(Main main) {
         this.main = main;
     }

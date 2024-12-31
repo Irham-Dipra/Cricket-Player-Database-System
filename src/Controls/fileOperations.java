@@ -58,8 +58,10 @@ public class fileOperations {
         while((line = br.readLine()) != null)
         {
             String[] parts = line.split(",");
+            // System.out.println(parts[0] + " " + parts[1]);
             initialMap.put(parts[0], parts[1]);
         }
+        System.out.println("Initials loaded");
         br.close();
     }
 

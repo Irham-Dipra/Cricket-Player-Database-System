@@ -439,6 +439,23 @@ public class Main extends Application {
         stage.show();
     }
 
+    public void showBuyPlayerList(ArrayList<Player> playerList) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Scenes/buyPlayerList.fxml"));
+        Parent root = loader.load();
+
+        // Loading the controller
+        buyPlayerListController controller = loader.getController();
+        controller.setMain(this);
+        controller.init(playerList);
+
+        // Set the primary stage
+        stage.setTitle("Buy Player List");
+        stage.setScene(new Scene(root, 500, 400));
+        stage.show();
+    }
+
     public void showAlert(String head, String msg)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

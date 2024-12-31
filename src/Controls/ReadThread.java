@@ -4,6 +4,7 @@ import DTO.*;
 import Controllers.*;
 import javafx.application.Platform;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ReadThread implements Runnable {
@@ -28,14 +29,14 @@ public class ReadThread implements Runnable {
                         System.out.println(loginDTO.isStatus());
                         String clubName = (String) main.socketWrapper.read();
                         ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
-                        listOperations.showAllPlayers(playerList);
                         // the following is necessary to update JavaFX UI components from user created threads
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
                                 if (loginDTO.isStatus()) {
                                     try {
-                                        main.setClubName(Server.initialMap.get(loginDTO.getUserName()));
+                                        main.setClubName(clubName);
+                                        System.out.println("club name: " + main.getClubName());
                                         main.showUserHomePage(loginDTO.getUserName(), playerList);
                                     } catch (Exception e) {
                                         e.printStackTrace();
@@ -109,6 +110,35 @@ public class ReadThread implements Runnable {
                                     }
                                 });
                             }
+                        }
+                        else if(s.equals("buyPlayerList"))
+                        {
+                            ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
+                            System.out.println("client list paise");
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        main.showBuyPlayerList(playerList);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
+                        else if(s.equals("backToClubList"))
+                        {
+                            ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        main.showUserHomePage(main.getClubName(), playerList);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                         }
                     }
                 }

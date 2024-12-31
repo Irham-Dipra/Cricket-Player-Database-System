@@ -41,7 +41,6 @@ public class listOperations {
         {
             if(playerList.get(i).getName().equals(name))
             {
-                showDetails(playerList.get(i));
                 return playerList.get(i);
             }
         }
@@ -198,6 +197,18 @@ public class listOperations {
         return temp;
     }
 
+    public static void sellPlayer(ArrayList<Player> playerList, Player player)
+    {
+        for(int i = 0;i < playerList.size();i++)
+        {
+            if(playerList.get(i).getName().equals(player.getName()))
+            {
+                playerList.get(i).setClub("Free Agent");
+                break;
+            }
+        }
+    }
+
     public static ArrayList<Player> getFreePlayers(ArrayList<Player> playerList)
     {
         ArrayList<Player> freePlayers = new ArrayList<>();
@@ -211,33 +222,45 @@ public class listOperations {
         return freePlayers;
     }
 
-    public static int getTotalSalary(ArrayList<Player> playerList, String club)
+    public static void buyPlayer(ArrayList<Player> playerList, Player player, String club)
     {
-        int total = -1;
         for(int i = 0;i < playerList.size();i++)
         {
-            Player p = playerList.get(i);
-            if((p.club).equals(club))
+            if(playerList.get(i).getName().equals(player.getName()))
             {
-                if(total == -1)
-                    total = p.salary;
-                else
-                    total += p.salary;
+                playerList.get(i).setClub(club);
+                break;
             }
         }
-        return total;
     }
 
-    public static int getClubNetWorth(ArrayList<Player> playerList, String clubName)
-    {
-        int netWorth = 0;
-        for(Player player: playerList)
-        {
-            if(player.club.equals(clubName))
-            {
-                netWorth += player.salary;
-            }
-        }
-        return netWorth;
-    }
+    // public static int getTotalSalary(ArrayList<Player> playerList, String club)
+    // {
+    //     int total = -1;
+    //     for(int i = 0;i < playerList.size();i++)
+    //     {
+    //         Player p = playerList.get(i);
+    //         if((p.club).equals(club))
+    //         {
+    //             if(total == -1)
+    //                 total = p.salary;
+    //             else
+    //                 total += p.salary;
+    //         }
+    //     }
+    //     return total;
+    // }
+
+    // public static int getClubNetWorth(ArrayList<Player> playerList, String clubName)
+    // {
+    //     int netWorth = 0;
+    //     for(Player player: playerList)
+    //     {
+    //         if(player.club.equals(clubName))
+    //         {
+    //             netWorth += player.salary;
+    //         }
+    //     }
+    //     return netWorth;
+    // }
 }

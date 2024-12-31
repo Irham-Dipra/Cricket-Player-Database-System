@@ -33,7 +33,6 @@ public class ReadThreadServer implements Runnable {
                         String clubName = Server.initialMap.get(loginDTO.getUserName());
                         socketWrapper.write(clubName);
                         socketWrapper.write(listOperations.getClubPlayerList(Server.playerList, clubName));
-                        listOperations.showAllPlayers(listOperations.getClubPlayerList(Server.playerList, clubName));
                     }
                     else if(o instanceof String)
                     {
@@ -98,6 +97,37 @@ public class ReadThreadServer implements Runnable {
                             ArrayList <Player> myPlayers = listOperations.getClubPlayerList(Server.playerList, clubName);
                             socketWrapper.write("myClubPlayers");
                             socketWrapper.write(myPlayers);
+                            socketWrapper.flush();
+                        }
+                        else if(s.equals("buyPlayers"))
+                        {
+                            socketWrapper.write("buyPlayerList");
+                            System.out.println("buy korte ashche");
+                            socketWrapper.write(listOperations.getFreePlayers(Server.playerList));
+                            socketWrapper.flush();
+                        }
+                        else if(s.equals("sellPlayer"))
+                        {
+                            System.out.println("sell korte ashche");
+                            Player player = (Player) socketWrapper.read();
+                            listOperations.sellPlayer(Server.playerList, player);
+                            System.out.println("Player sold: " + player.name);
+                            listOperations.showDetails(player);
+                            listOperations.showDetails(listOperations.getPlayerByName(Server.playerList, player.getName()));
+                        }
+                        else if(s.equals("playerBought"))
+                        {
+                            Player player = (Player) socketWrapper.read();
+                            String clubName = (String) socketWrapper.read();
+                            listOperations.buyPlayer(Server.playerList, player, clubName);
+                        }
+                        else if(s.equals("backToClubList"))
+                        {
+                            String clubName = (String) socketWrapper.read();
+                            System.out.println("Server e ashche backToClubList" + clubName);
+                            socketWrapper.write("backToClubList");
+                            socketWrapper.write(listOperations.getClubPlayerList(Server.playerList, clubName));
+                            System.out.println("the new list is: ");
                             socketWrapper.flush();
                         }
                     }
