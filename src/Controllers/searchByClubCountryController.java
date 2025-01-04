@@ -17,6 +17,12 @@ public class searchByClubCountryController {
     @FXML
     private TextField countryField;
 
+    public void initialize() {
+        // Set focus to a different component (e.g., the first button)
+        // search.requestFocus();
+        clubField.setFocusTraversable(false);
+        countryField.setFocusTraversable(false);
+    }
     
     public void searchClicked(ActionEvent actionEvent)
     {

@@ -29,7 +29,7 @@
                   <Button fx:id="searchPlayers" mnemonicParsing="false" onAction="#searchPlayersClicked" prefHeight="37.0" prefWidth="142.0" styleClass="modern-button" stylesheets="@testStyles.css" text="Search Players" />
                   <Button fx:id="searchClubs" mnemonicParsing="false" onAction="#searchClubsClicked" prefHeight="26.0" prefWidth="142.0" styleClass="modern-button" text="Search Clubs" />
                   <Button fx:id="addPlayers" mnemonicParsing="false" onAction="#addPlayersClicked" prefHeight="26.0" prefWidth="142.0" styleClass="modern-button" text="Add Players" />
-                  <Button fx:id="back" mnemonicParsing="false" onAction="#backClicked" prefHeight="26.0" prefWidth="142.0" styleClass="modern-button-secondary" text="Back" />
+                  <Button fx:id="back" mnemonicParsing="false" onAction="#backClicked" prefHeight="26.0" prefWidth="142.0" styleClass="modern-button-secondary" text="Logout" />
                </children>
             </VBox>
          </children>

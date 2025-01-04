@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.util.*;
@@ -14,6 +15,13 @@ public class searchByPositionController {
 
     @FXML
     private TextField positionField;
+
+
+    public void initialize() {
+        // Set focus to a different component (e.g., the first button)
+        // search.requestFocus();
+        positionField.setFocusTraversable(false);
+    }
 
     public void searchClicked(ActionEvent actionEvent) {
         System.out.println("search button clicked");

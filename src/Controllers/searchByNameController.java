@@ -12,6 +12,13 @@ public class searchByNameController {
 
     @FXML
     private TextField nameField;
+
+    public void initialize() {
+        // Set focus to a different component (e.g., the first button)
+        // search.requestFocus();
+        nameField.setFocusTraversable(false);
+    }
+
     public void searchClicked(ActionEvent actionEvent)
     {
         System.out.println("search button clicked");

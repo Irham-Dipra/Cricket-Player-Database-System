@@ -2,25 +2,32 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.searchByPositionController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<AnchorPane prefHeight="524.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.searchByPositionController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="500.0">
+      <!-- Background Image -->
+      <ImageView fitHeight="524.0" fitWidth="875.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/background-blur.jpg" />
+         </image>
+      </ImageView>
+      
+      <!-- VBox for layout -->
+      <VBox alignment="CENTER" layoutX="250.0" layoutY="118.0" maxHeight="375.0" maxWidth="375.0" minHeight="375.0" minWidth="375.0" prefHeight="375.0" prefWidth="375.0" spacing="20.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(255, 255, 255, 0.8); -fx-padding: 20px;" stylesheets="@testStyles.css">
          <children>
-            <TextField fx:id="positionField" layoutX="178.0" layoutY="135.0" prefHeight="26.0" prefWidth="144.0" text="Enter the position" />
-            <Button fx:id="search" layoutX="224.0" layoutY="197.0" mnemonicParsing="false" onAction="#searchClicked" text="Search" />
-            <Button fx:id="back" layoutX="230.0" layoutY="250.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
+            <!-- Position Input Field -->
+            <TextField fx:id="positionField" prefHeight="33.0" prefWidth="335.0" promptText="Enter the position" />
+            
+            <!-- Search Button -->
+            <Button fx:id="search" mnemonicParsing="false" onAction="#searchClicked" styleClass="modern-button" text="Search" />
+            
+            <!-- Back Button -->
+            <Button fx:id="back" mnemonicParsing="false" onAction="#backClicked" styleClass="modern-button-secondary" text="Back" />
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
-</GridPane>
+</AnchorPane>

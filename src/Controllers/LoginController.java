@@ -25,6 +25,14 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
+
+    public void initialize() {
+        // Set focus to a different component (e.g., the first button)
+        // search.requestFocus();
+        userText.setFocusTraversable(false);
+        passwordText.setFocusTraversable(false);
+    }
+
     @FXML
     void loginAction(ActionEvent event) {
         String userName = userText.getText();
