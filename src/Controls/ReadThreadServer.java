@@ -43,7 +43,7 @@ public class ReadThreadServer implements Runnable {
                             String name = (String) socketWrapper.read();
                             socketWrapper.write("Player");
                             Player player = listOperations.getPlayerByName(Server.playerList,name);
-                            listOperations.showDetails(player);
+                            // listOperations.showDetails(player);
                             socketWrapper.write(player);
                             socketWrapper.flush();
                         }
@@ -151,6 +151,16 @@ public class ReadThreadServer implements Runnable {
                             socketWrapper.write(listOperations.getClubPlayerList(Server.playerList, clubName));
                             System.out.println("the new list is: ");
                             socketWrapper.flush();
+                        }
+                        else if(s.equals("addPlayer"))
+                        {
+                            Player player = (Player) socketWrapper.read();
+                            listOperations.addPlayer(Server.playerList, player);
+                        }
+                        else if(s.equals("exit"))
+                        {
+                            // fileOperations.saveData(Server.playerList);
+                            socketWrapper.write("exit");
                         }
                     }
                 }

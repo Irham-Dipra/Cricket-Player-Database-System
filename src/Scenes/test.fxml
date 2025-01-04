@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #f0f8ff;" styleClass="src/scenes/testStyles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeController">
+    <children>
+
+        <!-- Modern Buttons -->
+        <Button fx:id="loginGuest" layoutX="300.0" layoutY="200.0" onAction="#guestLoginClicked" prefHeight="50.0" prefWidth="200.0" styleClass="modern-button" stylesheets="@testStyles.css" text="Login as Guest" />
+        <Button fx:id="loginUser" layoutX="300.0" layoutY="270.0" onAction="#userLoginClicked" prefHeight="50.0" prefWidth="200.0" styleClass="modern-button" stylesheets="@testStyles.css" text="Login as User" />
+        <Button fx:id="exit" layoutX="300.0" layoutY="340.0" onAction="#exitClicked" prefHeight="50.0" prefWidth="200.0" styleClass="modern-button" stylesheets="@testStyles.css" text="Exit" />
+      <ImageView fitHeight="1082.0" fitWidth="1923.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/pixelcut-export.jpeg" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

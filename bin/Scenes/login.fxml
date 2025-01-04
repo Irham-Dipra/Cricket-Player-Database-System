@@ -2,23 +2,37 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+<AnchorPane prefHeight="524.0" prefWidth="875.0" stylesheets="@testStyles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
    <children>
-      <Label layoutX="74.0" layoutY="63.0" text="Username" />
-      <Label layoutX="74.0" layoutY="125.0" text="Password" />
-      <TextField fx:id="userText" layoutX="169.0" layoutY="58.0" />
-      <PasswordField fx:id="passwordText" layoutX="169.0" layoutY="120.0" />
-      <ButtonBar layoutX="137.0" layoutY="193.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetAction" text="Reset" />
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
-        </buttons>
-      </ButtonBar>
-      <Button fx:id="back" layoutX="74.0" layoutY="200.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
+      <!-- Background Image -->
+      <ImageView fx:id="backgroundImageView" fitHeight="524.0" fitWidth="875.0" preserveRatio="false">
+         <image>
+            <Image url="@../Images/background-blur.jpg" />
+         </image></ImageView>
+      
+      <!-- Main Content -->
+      <VBox alignment="CENTER" layoutX="262.0" layoutY="60.0" prefHeight="423.0" prefWidth="350.0" spacing="20.0" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-padding: 20px; -fx-border-radius: 15; -fx-background-radius: 15;">
+         <children>
+            <TextField fx:id="userText" promptText="Username" />
+            <PasswordField fx:id="passwordText" promptText="Password" />
+            <VBox spacing="10.0" />
+             <Button fx:id="resetButton" onAction="#resetAction" styleClass="modern-button" text="Reset" />
+            <ButtonBar prefHeight="40.0" prefWidth="336.0">
+               <buttons>
+                   <Button fx:id="loginButton" onAction="#loginAction" styleClass="modern-button" text="Sign In" />
+                   <Button fx:id="guestButton" onAction="#guestLoginAction" prefHeight="37.0" prefWidth="192.0" styleClass="modern-button" text="Guest Login" />
+               </buttons>
+            </ButtonBar>
+            <Button fx:id="back" onAction="#backClicked" styleClass="modern-button-secondary" text="Go Back" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="81.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -40,6 +40,15 @@ public class LoginController {
     }
 
     @FXML
+    void guestLoginAction(ActionEvent event) {
+        try {
+            main.showGuestHomePage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void resetAction(ActionEvent event) {
         userText.setText(null);
         passwordText.setText(null);

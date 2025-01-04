@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import Controllers.*;
-import DataModels.club;
 import java.util.Map;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class Main extends Application {
         showHomePage();
         // Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         // primaryStage.setTitle("Hello World");
-        // primaryStage.setScene(new Scene(root, 500, 400));
+        // primaryStage.setScene(new Scene(root, 875, 524));
         // primaryStage.setResizable(false);
         // primaryStage.show();
     }
@@ -68,7 +67,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("home");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -85,7 +84,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Home");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -101,7 +100,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Home");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -117,7 +116,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Login");
-        stage.setScene(new Scene(root, 400, 250));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -133,7 +132,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search Players");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -149,7 +148,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search By Clubs");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -166,7 +165,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Add Players");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -182,7 +181,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search By Name");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -199,7 +198,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Player Details");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -216,7 +215,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search By club and country");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -233,7 +232,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Player Details");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -251,7 +250,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Player Details");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -267,7 +266,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search By Position");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -283,7 +282,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search By Salary");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -300,7 +299,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Max Salary");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
     
@@ -317,7 +316,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Max Salary");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -334,7 +333,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Max Salary");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -351,7 +350,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Country Player Count");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -367,7 +366,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Search Total Salary");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -384,7 +383,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Total Salary");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 
@@ -401,7 +400,7 @@ public class Main extends Application {
 
         // Set the primary stage
         stage.setTitle("Buy Player List");
-        stage.setScene(new Scene(root, 500, 400));
+        stage.setScene(new Scene(root, 875, 524));
         stage.show();
     }
 

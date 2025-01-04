@@ -1,0 +1,47 @@
+/* General Style */
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #f4f4f4; /* Light background */
+}
+
+/* Header Label */
+.header-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #275c90; /* Soft blue */
+    -fx-padding: 10px;
+}
+
+/* Modern Button Style */
+.modern-button {
+    -fx-background-color: #2577c9; /* Dark blue */
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 20; /* Rounded corners */
+    -fx-background-radius: 20;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand; /* Change cursor to hand on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+}
+
+.modern-button:hover {
+    -fx-background-color: #205a99; /* Lighter blue on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0, 0, 6);
+}
+
+/* Secondary Button Style */
+.modern-button-secondary {
+    -fx-background-color: #e0e0e0; /* Light gray */
+    -fx-text-fill: #333; /* Dark text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.modern-button-secondary:hover {
+    -fx-background-color: #c8c8c8; /* Slightly darker gray */
+}

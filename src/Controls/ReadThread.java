@@ -157,6 +157,10 @@ public class ReadThread implements Runnable {
                                 }
                             });
                         }
+                        else if(s.equals("exit"))
+                        {
+                            System.exit(0);
+                        }
                     }
                 }
             }

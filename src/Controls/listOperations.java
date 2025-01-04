@@ -251,6 +251,29 @@ public class listOperations {
         return total;
     }
 
+    public static void addPlayer(ArrayList<Player> playerList, Player player)
+    {
+        playerList.add(player);
+    }
+
+    public static class CountryPlayerCount {
+        private final String country;
+        private final Integer playerCount;
+    
+        public CountryPlayerCount(String country, Integer playerCount) {
+            this.country = country;
+            this.playerCount = playerCount;
+        }
+    
+        public String getCountry() {
+            return country;
+        }
+    
+        public Integer getPlayerCount() {
+            return playerCount;
+        }
+    }
+
     // public static int getClubNetWorth(ArrayList<Player> playerList, String clubName)
     // {
     //     int netWorth = 0;

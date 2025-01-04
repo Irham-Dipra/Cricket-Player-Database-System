@@ -42,4 +42,8 @@ public class SocketWrapper {
         ois.close();
         oos.close();
     }
+
+    public void closeSocket() throws IOException {
+        socket.close();
+    }
 }

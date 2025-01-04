@@ -96,7 +96,9 @@ public class fileOperations {
 
     public static void saveData(ArrayList<Player> playerList) throws Exception
     {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("src/Data/players.txt", true));
+        listOperations.showAllPlayers(playerList);
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/Data/players.txt"));
+        System.out.println("Saving data");
         appendPlayer(playerList, bw);
         bw.close();
     }

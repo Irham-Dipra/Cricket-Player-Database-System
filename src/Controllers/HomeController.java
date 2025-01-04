@@ -11,16 +11,7 @@ public class HomeController {
     private Main main;
     @FXML
     private Label label;
-    public void guestLoginClicked(ActionEvent actionEvent)
-    {
-        System.out.println("Guest Login clicked");
-        try {
-            main.showGuestHomePage();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void userLoginClicked(ActionEvent actionEvent)
+    public void loginClicked(ActionEvent actionEvent)
     {
         System.out.println("User Login clicked");
         try {
@@ -33,11 +24,11 @@ public class HomeController {
     {
         System.out.println("Exit clicked");
         try {
-            phase1Main.saveData();
+            main.getSocketWrapper().write("exit");
+            main.getSocketWrapper().flush();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
-        System.exit(0);
     }
     public void setMain(Main main) {
         this.main = main;

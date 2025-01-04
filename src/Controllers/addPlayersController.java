@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import Phase1.PlayerList;
 
 public class addPlayersController {
 
@@ -48,12 +47,13 @@ public class addPlayersController {
     public void addClicked(ActionEvent actionEvent) {
         System.out.println("Add button clicked");
         setPlayerDetails();
-        PlayerList.addPlayer(name, country, age, height, club, position, jersey, salary, false);
-        PlayerList.showDetails(PlayerList.getPlayerList().get(PlayerList.getPlayerList().size()-1));
         try {
-            main.showGuestHomePage();
+            main.getSocketWrapper().write("addPlayer");
+            Player player = new Player(name, country, age, height, club, position, jersey, salary, true);
+            main.getSocketWrapper().write(player);
+            main.getSocketWrapper().flush();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
     }
 
