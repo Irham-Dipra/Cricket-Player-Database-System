@@ -2,39 +2,71 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controllers.showPlayerDetailsController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<AnchorPane prefHeight="524.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.showPlayerDetailsController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="500.0">
+      <!-- Background Image -->
+      <ImageView fx:id="backgroundImage" fitHeight="524.0" fitWidth="875.0" pickOnBounds="true" preserveRatio="true" />
+      
+      <!-- Main VBox for content -->
+      <VBox alignment="CENTER" layoutX="250.0" layoutY="70.0" maxHeight="400.0" maxWidth="400.0" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" spacing="20.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(255, 255, 255, 0.85); -fx-padding: 20px;" stylesheets="@testStyles.css">
          <children>
-            <Button fx:id="back" layoutX="230.0" layoutY="353.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
-            <Label layoutX="77.0" layoutY="86.0" prefHeight="18.0" prefWidth="110.0" text="Name" />
-            <Label layoutX="77.0" layoutY="124.0" prefHeight="18.0" prefWidth="41.0" text="age" />
-            <Label layoutX="77.0" layoutY="165.0" text="height" />
-            <Label layoutX="80.0" layoutY="200.0" text="Salary" />
-            <Label layoutX="80.0" layoutY="240.0" text="Club" />
-            <Label layoutX="80.0" layoutY="279.0" text="Country" />
-            <Label fx:id="nameLabel" layoutX="236.0" layoutY="87.0" text="Label" />
-            <Label fx:id="ageLabel" layoutX="236.0" layoutY="125.0" text="Label" />
-            <Label fx:id="heightLabel" layoutX="236.0" layoutY="165.0" text="Label" />
-            <Label fx:id="salaryLabel" layoutX="236.0" layoutY="200.0" text="Label" />
-            <Label fx:id="clubLabel" layoutX="236.0" layoutY="240.0" text="Label" />
-            <Label fx:id="countryLabel" layoutX="236.0" layoutY="279.0" text="Label" />
-            <Label layoutX="84.0" layoutY="312.0" text="Position" />
-            <Label fx:id="positionLabel" layoutX="236.0" layoutY="312.0" text="Label" />
-            <Label layoutX="330.0" layoutY="174.0" text="Jersey Number" />
-            <Label fx:id="jerseyLabel" layoutX="430.0" layoutY="174.0" text="Label" />
+            <!-- Name -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Name" />
+               <Label fx:id="nameLabel" styleClass="form-value" text="Label" />
+            </HBox>
+            
+            <!-- Age -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Age" />
+               <Label fx:id="ageLabel" styleClass="form-value" text="Label" />
+            </HBox>
+            
+            <!-- Height -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Height" />
+               <Label fx:id="heightLabel" styleClass="form-value" text="Label" />
+            </HBox>
+            
+            <!-- Salary -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Salary" />
+               <Label fx:id="salaryLabel" styleClass="form-value" text="Label" />
+            </HBox>
+            
+            <!-- Club -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Club" />
+               <Label fx:id="clubLabel" styleClass="form-value" text="Label" />
+            </HBox>
+            
+            <!-- Country -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Country" />
+               <Label fx:id="countryLabel" styleClass="form-value" text="Label" />
+            </HBox>
+            
+            <!-- Position -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Position" />
+               <Label fx:id="positionLabel" styleClass="form-value" text="Label" />
+            </HBox>
+            
+            <!-- Jersey Number -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label styleClass="form-label" text="Jersey Number" />
+               <Label fx:id="jerseyLabel" styleClass="form-value" text="Label" />
+            </HBox>
          </children>
-      </AnchorPane>
+      </VBox>
+      
+      <!-- Back Button -->
+      <Button fx:id="back" layoutX="388.0" layoutY="490.0" mnemonicParsing="false" onAction="#backClicked" styleClass="modern-button-secondary" text="Back" />
    </children>
-</GridPane>
+</AnchorPane>

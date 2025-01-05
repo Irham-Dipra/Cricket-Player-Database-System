@@ -186,7 +186,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showPlayerDetails(Player player) throws Exception
+    public void showPlayerDetails(Player player, String imagePath) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/showPlayerDetails.fxml"));
@@ -195,6 +195,7 @@ public class Main extends Application {
         // Loading the controller
         showPlayerDetailsController controller = loader.getController();
         controller.setPlayer(player);
+        controller.setBackgroundImage(imagePath);
         controller.setMain(this);
 
         // Set the primary stage

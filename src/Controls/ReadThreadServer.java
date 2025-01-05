@@ -40,7 +40,16 @@ public class ReadThreadServer implements Runnable {
                     else if(o instanceof String)
                     {
                         String s = (String) o;
-                        if(s.equals("getPlayerByName"))
+                        if(s.equals("showPlayer"))
+                        {
+                            System.out.println("showPlayer request asche");
+                            Player player = (Player) socketWrapper.read();
+                            socketWrapper.write("Player");
+                            socketWrapper.write(player);
+                            socketWrapper.write(Server.imageMap.get(player.getClub()));
+                            socketWrapper.flush();
+                        }
+                        else if(s.equals("getPlayerByName"))
                         {
                             System.out.println("request asche");
                             String name = (String) socketWrapper.read();
@@ -48,6 +57,7 @@ public class ReadThreadServer implements Runnable {
                             Player player = listOperations.getPlayerByName(Server.playerList,name);
                             // listOperations.showDetails(player);
                             socketWrapper.write(player);
+                            socketWrapper.write(Server.imageMap.get(player.getClub()));
                             socketWrapper.flush();
                         }
                         else if(s.equals("getPlayersByClubAndCountry"))

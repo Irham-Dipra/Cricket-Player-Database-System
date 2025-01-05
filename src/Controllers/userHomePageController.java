@@ -55,7 +55,13 @@ public class userHomePageController {
                 // Action for Details button
                 detailsButton.setOnAction(event -> {
                     Player player = getTableView().getItems().get(getIndex());
-                    showPlayerDetails(player);
+                    try {
+                        main.getSocketWrapper().write("showPlayer");
+                        main.getSocketWrapper().write(player);
+                        main.getSocketWrapper().flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 });
 
                 // Action for Sell button

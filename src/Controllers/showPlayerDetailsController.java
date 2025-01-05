@@ -4,11 +4,14 @@ import Controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class showPlayerDetailsController {
 
     private Main main;
-    
+    @FXML
+    private ImageView backgroundImage;
     @FXML
     private Label nameLabel;
     @FXML
@@ -25,6 +28,12 @@ public class showPlayerDetailsController {
     private Label jerseyLabel;
     @FXML
     private Label heightLabel;
+
+    // Set dynamic background image
+    public void setBackgroundImage(String imagePath) {
+        backgroundImage.setImage(new Image(imagePath));
+    }
+
 
     @FXML
     public void backClicked(ActionEvent actionEvent)

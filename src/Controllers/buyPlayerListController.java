@@ -46,7 +46,13 @@ public class buyPlayerListController {
                 // Action for Details button
                 detailsButton.setOnAction(event -> {
                     Player player = getTableView().getItems().get(getIndex());
-                    showPlayerDetails(player);
+                    try {
+                        main.getSocketWrapper().write("showPlayer");
+                        main.getSocketWrapper().write(player);
+                        main.getSocketWrapper().flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 });
 
                 // Action for Buy button
@@ -80,14 +86,6 @@ public class buyPlayerListController {
         playersTable.setItems(playerList);
     }
 
-    // Show player details
-    private void showPlayerDetails(Player player) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Player Details");
-        alert.setHeaderText(player.getName());
-        alert.setContentText("Details for " + player.getName());
-        alert.showAndWait();
-    }
 
     // Buy player
     private void buyPlayer(Player player) {

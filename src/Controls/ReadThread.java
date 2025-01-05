@@ -57,6 +57,7 @@ public class ReadThread implements Runnable {
                         if(s.equals("Player"))
                         {
                             Player player = (Player) main.getSocketWrapper().read();
+                            String imagePath = (String) main.getSocketWrapper().read();
                             if(player == null)
                             {
                                 Platform.runLater(new Runnable() {
@@ -76,7 +77,7 @@ public class ReadThread implements Runnable {
                                     @Override
                                     public void run() {
                                         try {
-                                            main.showPlayerDetails(player);
+                                            main.showPlayerDetails(player, imagePath);
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
