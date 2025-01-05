@@ -4,15 +4,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import Controllers.*;
 import java.util.Map;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class Main extends Application {
 
+    
     private Stage stage;
     public static HashMap<String, String> userMap;
     public static HashMap<String, String> imageMap;
@@ -445,19 +451,46 @@ public class Main extends Application {
         }
     }
 
-    // Show player details
     public void showPlayerAlertDetails(Player player) throws IOException {
+        // Create a new alert with INFORMATION type
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Player Details");
         alert.setHeaderText(player.getName());
-        alert.setContentText("Age: " + player.getAge() + "\n" +
-                "Position: " + player.getPosition() + "\n" +
-                "Country: " + player.getCountry() + "\n" +
-                "Club: " + player.getClub() + "\n" +
-                "Value: " + player.getSalary() + "\n" +
-                "Wage: " + player.getJersey());
-        alert.showAndWait();
 
+        // Create a VBox to hold the content
+        VBox vbox = new VBox(15); // Spacing between labels
+
+        // Create and add labels for player details
+        Label ageLabel = new Label("Age: " + player.getAge());
+        Label positionLabel = new Label("Position: " + player.getPosition());
+        Label countryLabel = new Label("Country: " + player.getCountry());
+        Label clubLabel = new Label("Club: " + player.getClub());
+        Label salaryLabel = new Label("Value: " + player.getSalary());
+        Label jerseyLabel = new Label("Wage: " + player.getJersey());
+
+        // Set custom font size and style for labels
+        Font labelFont = new Font("Arial", 14); // Font size 14 for better readability
+        ageLabel.setFont(labelFont);
+        positionLabel.setFont(labelFont);
+        countryLabel.setFont(labelFont);
+        clubLabel.setFont(labelFont);
+        salaryLabel.setFont(labelFont);
+        jerseyLabel.setFont(labelFont);
+
+        // Add labels to VBox
+        vbox.getChildren().addAll(ageLabel, positionLabel, countryLabel, clubLabel, salaryLabel, jerseyLabel);
+
+        // Set the custom content for the alert using VBox
+        alert.getDialogPane().setContent(vbox);
+
+        // Set custom width and height for the alert window
+        alert.getDialogPane().setPrefSize(400, 300); // You can adjust these values
+
+        // Apply CSS styles (Optional: define styles in a separate CSS file)
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("alertStyles.css").toExternalForm());
+
+        // Show the alert
+        alert.showAndWait();
     }
     
     public static void main(String[] args) {
