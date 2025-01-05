@@ -154,7 +154,9 @@ public class ReadThreadServer implements Runnable {
                         }
                         else if(s.equals("addPlayer"))
                         {
+                            System.out.println("add clicked");
                             Player player = (Player) socketWrapper.read();
+                            socketWrapper.write("playerAdded");
                             listOperations.addPlayer(Server.playerList, player);
                         }
                         else if(s.equals("exit"))

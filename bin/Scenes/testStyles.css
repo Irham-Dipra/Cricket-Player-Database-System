@@ -1,3 +1,60 @@
+
+.form-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 10px 0;
+}
+
+.form-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+}
+
+.form-textfield {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5 10;
+}
+
+.form-combobox {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+/* Table Styling */
+.table-view {
+    -fx-border-color: transparent;
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+}
+
+.table-column-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4285f4; /* Soft blue text for headers */
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-row-cell {
+    -fx-border-color: transparent;
+    -fx-background-color: #f9f9f9;
+    -fx-alternate-row-fill: #eaeaea;
+}
+
+/* Info Box Styling */
+.info-box {
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Action Box Styling */
+.action-box {
+    -fx-alignment: CENTER;
+    -fx-spacing: 10px;
+}
+
 /* VBox Styling */
 .vbox {
     -fx-background-color: rgba(255, 255, 255, 0.9);

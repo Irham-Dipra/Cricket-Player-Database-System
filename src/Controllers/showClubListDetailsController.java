@@ -1,133 +1,176 @@
 package Controllers;
+
 import Controls.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import java.util.List;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TableCell;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.util.Callback;
 import javafx.event.ActionEvent;
+import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 
 public class showClubListDetailsController {
 
+    @FXML private TableView<Player> playerTable;
+    @FXML private TableColumn<Player, String> nameColumn;
+    @FXML private TableColumn<Player, Player> infoColumn;
+    @FXML private TableColumn<Player, Player> actionColumn;
+    @FXML private TextField commandField;
     private Main main;
     private String searchType;
 
-    @FXML
-    private TableView<Player> table;
+    private ArrayList<Player> playerList;
 
-    @FXML
-    private TableColumn<Player, Integer> age;
-
-    @FXML
-    private TableColumn<Player, String> club;
-
-    @FXML
-    private TableColumn<Player, String> country;
-
-    @FXML
-    private TableColumn<Player, Integer> height;
-
-    @FXML
-    private TableColumn<Player, Integer> jersey;
-
-    @FXML
-    private TableColumn<Player, String> name;
-
-    @FXML
-    private TableColumn<Player, String> position;
-
-    @FXML
-    private TableColumn<Player, Integer> salary;
-
-    ObservableList<Player> playerList = FXCollections.observableArrayList(
-            // new Player("Lionel Messi", "Argentina", 33, 170, "Barcelona", "Forward", 10, 1000000, true),
-            // new Player("Cristiano Ronaldo", "Portugal", 35, 188, "Juventus", "Forward", 7, 1000000, true),
-            // new Player("Neymar Jr", "Brazil", 28, 175, "PSG", "Forward", 10, 1000000, true),
-            // new Player("Kylian Mbappe", "France", 21, 178, "PSG", "Forward", 7, 1000000, true),
-            // new Player("Mohamed Salah", "Egypt", 28, 175, "Liverpool", "Forward", 11, 1000000, true),
-            // new Player("Sadio Mane", "Senegal", 28, 175, "Liverpool", "Forward", 10, 1000000, true)
-    );
-    public void setPlayerList(List<Player> playerList)
-    {
-        for(Player player: playerList)
-        {
-            this.playerList.add(player);
-        }
-    }
-    public void initialize()
-    {
-        name.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
-        country.setCellValueFactory(new PropertyValueFactory<Player, String>("country"));
-        age.setCellValueFactory(new PropertyValueFactory<Player, Integer>("age"));
-        height.setCellValueFactory(new PropertyValueFactory<Player, Integer>("height"));
-        club.setCellValueFactory(new PropertyValueFactory<Player, String>("club"));
-        position.setCellValueFactory(new PropertyValueFactory<Player, String>("position"));
-        jersey.setCellValueFactory(new PropertyValueFactory<Player, Integer>("jersey"));
-        salary.setCellValueFactory(new PropertyValueFactory<Player, Integer>("salary"));
-
-        table.setItems(playerList);
-    }
-    public void setMain(Main main)
-    {
+    public void setMain(Main main) {
         this.main = main;
-    }
-    public void backClicked(ActionEvent actionEvent)
-    {
-        System.out.println("back button initiated");
-        if(searchType.equals("searchClubCountry"))
-        {
-            try {
-                main.showSearchByClubCountry();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else if(searchType.equals("searchPosition"))
-        {
-            try {
-                main.showSearchByPosition();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else if(searchType.equals("searchSalary"))
-        {
-            try {
-                main.showSearchBySalary();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else if(searchType.equals("searchMaxSalary"))
-        {
-            try {
-                main.showMaxSalary();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else if(searchType.equals("searchMaxAge"))
-        {
-            try {
-                main.showMaxAge();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else if(searchType.equals("searchMaxHeight"))
-        {
-            try {
-                main.showMaxHeight();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void setSearchType(String searchType) {
         this.searchType = searchType;
+    }
+
+    @FXML
+    public void init() {
+        // Set up name column
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        // Set up info column with custom cell factory
+        infoColumn.setCellValueFactory(param -> new javafx.beans.property.SimpleObjectProperty<>(param.getValue()));
+        infoColumn.setCellFactory(createInfoCellFactory());
+
+        // Set up action column with custom cell factory for buttons
+        actionColumn.setCellValueFactory(param -> new javafx.beans.property.SimpleObjectProperty<>(param.getValue()));
+        actionColumn.setCellFactory(createActionCellFactory());
+
+        updatePlayerTable();
+        System.out.println("search type: " + searchType);
+    }
+
+    private void updatePlayerTable() {
+        playerTable.getItems().clear();
+        playerTable.getItems().addAll(playerList);
+
+        // Save the command in a way accessible to the cell factory
+        playerTable.setUserData(searchType);
+    }
+
+    private Callback<TableColumn<Player, Player>, TableCell<Player, Player>> createInfoCellFactory() {
+        return param -> new TableCell<>() {
+            @Override
+            protected void updateItem(Player player, boolean empty) {
+                super.updateItem(player, empty);
+                if (empty || player == null) {
+                    setGraphic(null);
+                } else {
+                    String command = (String) getTableView().getUserData();
+                    HBox infoBox = new HBox(10);
+                    infoBox.getStyleClass().add("info-box");
+                    System.out.println("command: " + command);
+
+                    if (command != null) {
+                        // Handle different commands
+                        switch (command) {
+                            case "searchClubCountry":
+                                infoBox.getChildren().addAll(
+                                    createLabel("Club: " + player.getClub()),
+                                    createLabel("Country: " + player.getCountry())
+                                );
+                                break;
+                            case "searchPosition":
+                                break;
+                            case "searchMaxAge":
+                                infoBox.getChildren().add(createLabel("Age: " + player.getAge()));
+                                break;
+                            case "searchMaxHeight":
+                                infoBox.getChildren().add(createLabel("Height: " + player.getHeight()));
+                                break;
+                            case "searchMaxSalary":
+                                infoBox.getChildren().add(createLabel("Salary: " + player.getSalary()));
+                                break;
+                            case "searchSalary":
+                                infoBox.getChildren().add(createLabel("Salary: " + player.getSalary()));
+                                break;
+                            default:
+                                infoBox.getChildren().add(createLabel("Invalid command."));
+                        }
+                    }
+
+                    setGraphic(infoBox);
+                }
+            }
+        };
+    }
+
+    private Callback<TableColumn<Player, Player>, TableCell<Player, Player>> createActionCellFactory() {
+        return param -> new TableCell<>() {
+            @Override
+            protected void updateItem(Player player, boolean empty) {
+                super.updateItem(player, empty);
+                if (empty || player == null) {
+                    setGraphic(null);
+                } else {
+                    HBox actionBox = new HBox(10);
+                    actionBox.getStyleClass().add("action-box");
+
+                    // "View" Button
+                    Button viewButton = new Button("View");
+                    viewButton.getStyleClass().add("modern-button");
+                    viewButton.setOnAction(e -> showFullInfo(player));
+
+                    actionBox.getChildren().addAll(viewButton);
+                    setGraphic(actionBox);
+                }
+            }
+        };
+    }
+
+    private Text createLabel(String text) {
+        Text label = new Text(text);
+        label.setFill(Color.DARKGRAY); // Add color styling
+        label.getStyleClass().add("info-label"); // Optionally apply CSS
+        return label;
+    }
+
+    private void showFullInfo(Player player) {
+        // Display full information about the player (dialog, alert, or new screen)
+        listOperations.showDetails(player);
+    }
+
+    private void editPlayer(Player player) {
+        // Code to edit player details
+        System.out.println("Editing player: " + player.getName());
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
+    }
+
+    public void backClicked(ActionEvent actionEvent) {
+        try {
+            if (searchType.equals("searchClubCountry")) {
+                main.showSearchByClubCountry();
+            } else if (searchType.equals("searchPosition")) {
+                main.showSearchByPosition();
+            } else if (searchType.equals("searchSalary")) {
+                main.showSearchBySalary();
+            } else if (searchType.equals("searchMaxSalary")) {
+                main.showMaxSalary();
+            } else if (searchType.equals("searchMaxAge")) {
+                main.showMaxAge();
+            } else if (searchType.equals("searchMaxHeight")) {
+                main.showMaxHeight();
+            } else {
+                main.showGuestHomePage();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

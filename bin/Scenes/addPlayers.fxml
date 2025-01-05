@@ -4,40 +4,69 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="Controllers.addPlayersController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<AnchorPane prefHeight="524.0" prefWidth="875.0" stylesheets="@testStyles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.addPlayersController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="500.0">
+      <!-- Background Image -->
+      <ImageView fitHeight="524.0" fitWidth="875.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/background-blur.jpg" />
+         </image>
+      </ImageView>
+      
+      <!-- VBox Container -->
+      <VBox alignment="CENTER" layoutX="200.0" layoutY="50.0" maxHeight="450.0" maxWidth="500.0" minHeight="450.0" minWidth="500.0" prefHeight="450.0" prefWidth="500.0" spacing="20.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(255, 255, 255, 0.8); -fx-padding: 20px;">
          <children>
-            <Label layoutX="55.0" layoutY="53.0" prefHeight="18.0" prefWidth="102.0" text="Enter Name" textAlignment="CENTER" />
-            <Label layoutX="55.0" layoutY="92.0" prefHeight="18.0" prefWidth="102.0" text="Enter country" textAlignment="CENTER" />
-            <Label layoutX="55.0" layoutY="137.0" prefHeight="18.0" prefWidth="102.0" text="Enter age" textAlignment="CENTER" />
-            <Label layoutX="55.0" layoutY="170.0" prefHeight="18.0" prefWidth="102.0" text="Enter height" textAlignment="CENTER" />
-            <Label layoutX="63.0" layoutY="208.0" prefHeight="18.0" prefWidth="102.0" text="Enter club" textAlignment="CENTER" />
-            <Label layoutX="63.0" layoutY="249.0" prefHeight="18.0" prefWidth="102.0" text="Enter Position" textAlignment="CENTER" />
-            <Label layoutX="55.0" layoutY="287.0" prefHeight="18.0" prefWidth="117.0" text="Enter jersey number" textAlignment="CENTER" />
-            <Label layoutX="55.0" layoutY="322.0" prefHeight="18.0" prefWidth="142.0" text="Enter the weekly salary" textAlignment="CENTER" />
-            <TextField fx:id="nameField" layoutX="250.0" layoutY="49.0" />
-            <TextField fx:id="countryField" layoutX="250.0" layoutY="88.0" />
-            <TextField fx:id="ageField" layoutX="251.0" layoutY="134.0" />
-            <TextField fx:id="heightField" layoutX="250.0" layoutY="167.0" />
-            <TextField fx:id="clubField" layoutX="243.0" layoutY="204.0" />
-            <TextField fx:id="jerseyField" layoutX="243.0" layoutY="283.0" />
-            <TextField fx:id="salaryField" layoutX="243.0" layoutY="318.0" />
-            <ComboBox fx:id="positionBox" layoutX="249.0" layoutY="245.0" prefWidth="150.0" promptText="Select a position" />
-            <Button fx:id="add" layoutX="172.0" layoutY="361.0" mnemonicParsing="false" onAction="#addClicked" text="Add" />
-            <Button fx:id="back" layoutX="251.0" layoutY="361.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
+            <!-- Form Title -->
+            <Label styleClass="form-title" text="Add Player Details" />
+            
+            <!-- Form Fields -->
+            <VBox spacing="10.0">
+               <HBox alignment="CENTER" spacing="20.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="form-label" text="Name:" />
+                  <TextField fx:id="nameField" promptText="Enter Name" styleClass="form-textfield" />
+               </HBox>
+               <HBox alignment="CENTER" spacing="20.0">
+                  <Label styleClass="form-label" text="Country:" />
+                  <TextField fx:id="countryField" promptText="Enter Country" styleClass="form-textfield" />
+               </HBox>
+               <HBox alignment="CENTER" spacing="20.0">
+                  <Label styleClass="form-label" text="Age:" />
+                  <TextField fx:id="ageField" promptText="Enter Age" styleClass="form-textfield" />
+               </HBox>
+               <HBox alignment="CENTER" spacing="20.0">
+                  <Label styleClass="form-label" text="Height:" />
+                  <TextField fx:id="heightField" promptText="Enter Height" styleClass="form-textfield" />
+               </HBox>
+               <HBox alignment="CENTER" spacing="20.0">
+                  <Label styleClass="form-label" text="Club:" />
+                  <TextField fx:id="clubField" promptText="Enter Club" styleClass="form-textfield" />
+               </HBox>
+               <HBox alignment="CENTER" spacing="20.0">
+                  <Label styleClass="form-label" text="Position:" />
+                  <ComboBox fx:id="positionBox" prefHeight="23.0" prefWidth="248.0" promptText="Select a Position" styleClass="form-combobox" />
+               </HBox>
+               <HBox alignment="CENTER" spacing="5.0">
+                  <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="103.0" styleClass="form-label" text="Jersey No:" />
+                  <TextField fx:id="jerseyField" prefHeight="29.0" prefWidth="269.0" promptText="Enter Jersey Number" styleClass="form-textfield" />
+               </HBox>
+               <HBox alignment="CENTER" spacing="5.0">
+                  <Label prefHeight="20.0" prefWidth="101.0" styleClass="form-label" text="Weekly Sal:" />
+                  <TextField fx:id="salaryField" prefHeight="29.0" prefWidth="281.0" promptText="Enter Weekly Salary" styleClass="form-textfield" />
+               </HBox>
+            </VBox>
+            
+            <!-- Buttons -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <Button fx:id="add" mnemonicParsing="false" onAction="#addClicked" styleClass="modern-button" text="Add" />
+               <Button fx:id="back" mnemonicParsing="false" onAction="#backClicked" styleClass="modern-button-secondary" text="Back" />
+            </HBox>
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
-</GridPane>
+</AnchorPane>

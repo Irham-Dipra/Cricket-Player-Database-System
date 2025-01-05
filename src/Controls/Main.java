@@ -247,6 +247,7 @@ public class Main extends Application {
         controller.setPlayerList(playerList);
         controller.setSearchType(searchType);
         controller.setMain(this);
+        controller.init();
 
         // Set the primary stage
         stage.setTitle("Player Details");

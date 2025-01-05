@@ -161,6 +161,32 @@ public class ReadThread implements Runnable {
                         {
                             System.exit(0);
                         }
+                        else if(s.equals("playerAdded"))
+                        {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        main.showGuestHomePage();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
+                        else if(s.equals("playerBought"))
+                        {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        main.showAlert("Success", "Player bought successfully.");
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
                     }
                 }
             }

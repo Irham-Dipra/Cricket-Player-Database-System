@@ -7,6 +7,8 @@ public class Player implements Serializable  {
     int age, number = -1, salary;
     double height;
     boolean exist;
+
+
     public Player(String name, String country, int age, double height, String club, String position, int number, int salary, boolean exist)
     {
         this.name = name;
