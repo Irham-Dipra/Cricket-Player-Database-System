@@ -1,9 +1,9 @@
 Kolkata Knight Riders,/Images/kkr-bg.jpg
 Rajasthan Royals,/Images/rr-bg.jpg
 Delhi Capitals,/Images/dc-bg.jpg
-Sunrisers Hydrabad,/Images/srh-bg.jpg
+Sunrisers Hyderabad,/Images/srh-bg.jpg
 Gujarat Titans,/Images/gt-bg.jpg
-Punjab kings,/Images/pbks-bg.jpg
+Punjab Kings,/Images/pbks-bg.jpg
 Mumbai Indians,/Images/mi-bg.png
 Royal Challengers Bangalore,/Images/rcb-bg.png
 Chennai Super Kings,/Images/csk-bg.jpg

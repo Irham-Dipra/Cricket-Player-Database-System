@@ -28,6 +28,11 @@ public class showPlayerDetailsController {
     private Label jerseyLabel;
     @FXML
     private Label heightLabel;
+    String searchType;
+
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
+    }
 
     // Set dynamic background image
     public void setBackgroundImage(String imagePath) {

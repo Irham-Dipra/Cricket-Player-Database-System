@@ -149,12 +149,13 @@ public class ReadThread implements Runnable {
                         else if(s.equals("buyPlayerList"))
                         {
                             ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
+                            String imagePath = (String) main.getSocketWrapper().read();
                             System.out.println("client list paise");
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
                                     try {
-                                        main.showBuyPlayerList(playerList);
+                                        main.showBuyPlayerList(playerList, imagePath);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }

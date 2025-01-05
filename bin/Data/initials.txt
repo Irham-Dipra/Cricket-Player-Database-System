@@ -5,6 +5,6 @@ srh,Sunrisers Hyderabad
 gt,Gujarat Titans
 pbks,Punjab Kings
 mi,Mumbai Indians
-rcb,Royal Challengers Bengalore
+rcb,Royal Challengers Bangalore
 csk,Chennai Super Kings
 lsg,Lucknow Super Giants

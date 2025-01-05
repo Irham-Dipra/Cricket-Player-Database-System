@@ -391,7 +391,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showBuyPlayerList(ArrayList<Player> playerList) throws Exception
+    public void showBuyPlayerList(ArrayList<Player> playerList, String imagePath) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/buyPlayerList.fxml"));
@@ -399,6 +399,7 @@ public class Main extends Application {
 
         // Loading the controller
         buyPlayerListController controller = loader.getController();
+        controller.setBackgroundImage(imagePath);
         controller.setMain(this);
         controller.init(playerList);
 
@@ -442,6 +443,21 @@ public class Main extends Application {
         public Integer getPlayerCount() {
             return playerCount;
         }
+    }
+
+    // Show player details
+    public void showPlayerAlertDetails(Player player) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Player Details");
+        alert.setHeaderText(player.getName());
+        alert.setContentText("Age: " + player.getAge() + "\n" +
+                "Position: " + player.getPosition() + "\n" +
+                "Country: " + player.getCountry() + "\n" +
+                "Club: " + player.getClub() + "\n" +
+                "Value: " + player.getSalary() + "\n" +
+                "Wage: " + player.getJersey());
+        alert.showAndWait();
+
     }
     
     public static void main(String[] args) {

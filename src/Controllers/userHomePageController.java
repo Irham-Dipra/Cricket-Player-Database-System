@@ -29,11 +29,14 @@ public class userHomePageController {
     @FXML
     private TableColumn<Player, Void> actionColumn;
 
+    private String imagePath;
+
     // Observable list to hold players
     private final ObservableList<Player> playerList = FXCollections.observableArrayList();
 
     // Set dynamic background image
     public void setBackgroundImage(String imagePath) {
+        this.imagePath = imagePath;
         backgroundImage.setImage(new Image(imagePath));
     }
 
@@ -56,9 +59,7 @@ public class userHomePageController {
                 detailsButton.setOnAction(event -> {
                     Player player = getTableView().getItems().get(getIndex());
                     try {
-                        main.getSocketWrapper().write("showPlayer");
-                        main.getSocketWrapper().write(player);
-                        main.getSocketWrapper().flush();
+                        main.showPlayerAlertDetails(player);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -95,15 +96,6 @@ public class userHomePageController {
         playersTable.setItems(playerList);
     }
 
-    // Show player details (this is just a placeholder)
-    private void showPlayerDetails(Player player) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Player Details");
-        alert.setHeaderText(player.getName());
-        alert.setContentText("Details for " + player.getName());
-        alert.showAndWait();
-    }
-
     // Sell player (just a placeholder)
     private void sellPlayer(Player player) {
         playerList.remove(player);
@@ -125,6 +117,7 @@ public class userHomePageController {
         System.out.println("Buy button clicked");
         try {
             main.getSocketWrapper().write("buyPlayers");
+            main.getSocketWrapper().write(imagePath);
             main.getSocketWrapper().flush();
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,6 +132,7 @@ public class userHomePageController {
             e.printStackTrace();
         }
     }
+
 
     public void setMain(Main main) {
         this.main = main;

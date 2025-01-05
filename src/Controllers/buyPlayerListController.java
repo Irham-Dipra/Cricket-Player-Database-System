@@ -10,10 +10,15 @@ import java.util.*;
 
 import Controls.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class buyPlayerListController {
 
     public Main main;
+
+    @FXML
+    private ImageView backgroundImage;
 
     @FXML
     private TableView<Player> playersTable;
@@ -26,6 +31,12 @@ public class buyPlayerListController {
 
     // Observable list to hold players
     private final ObservableList<Player> playerList = FXCollections.observableArrayList();
+
+
+    // Set dynamic background image
+    public void setBackgroundImage(String imagePath) {
+        backgroundImage.setImage(new Image(imagePath));
+    }
 
     // Initialize the controller
     @FXML
@@ -47,9 +58,7 @@ public class buyPlayerListController {
                 detailsButton.setOnAction(event -> {
                     Player player = getTableView().getItems().get(getIndex());
                     try {
-                        main.getSocketWrapper().write("showPlayer");
-                        main.getSocketWrapper().write(player);
-                        main.getSocketWrapper().flush();
+                        main.showPlayerAlertDetails(player);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -85,7 +94,6 @@ public class buyPlayerListController {
         playerList.addAll(list);
         playersTable.setItems(playerList);
     }
-
 
     // Buy player
     private void buyPlayer(Player player) {

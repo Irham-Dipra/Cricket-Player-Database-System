@@ -40,16 +40,7 @@ public class ReadThreadServer implements Runnable {
                     else if(o instanceof String)
                     {
                         String s = (String) o;
-                        if(s.equals("showPlayer"))
-                        {
-                            System.out.println("showPlayer request asche");
-                            Player player = (Player) socketWrapper.read();
-                            socketWrapper.write("Player");
-                            socketWrapper.write(player);
-                            socketWrapper.write(Server.imageMap.get(player.getClub()));
-                            socketWrapper.flush();
-                        }
-                        else if(s.equals("getPlayerByName"))
+                        if(s.equals("getPlayerByName"))
                         {
                             System.out.println("request asche");
                             String name = (String) socketWrapper.read();
@@ -58,6 +49,7 @@ public class ReadThreadServer implements Runnable {
                             // listOperations.showDetails(player);
                             socketWrapper.write(player);
                             socketWrapper.write(Server.imageMap.get(player.getClub()));
+                            socketWrapper.write("searchName");
                             socketWrapper.flush();
                         }
                         else if(s.equals("getPlayersByClubAndCountry"))
@@ -142,9 +134,11 @@ public class ReadThreadServer implements Runnable {
                         }
                         else if(s.equals("buyPlayers"))
                         {
+                            String imagePath = (String) socketWrapper.read();
                             socketWrapper.write("buyPlayerList");
                             System.out.println("buy korte ashche");
                             socketWrapper.write(listOperations.getFreePlayers(Server.playerList));
+                            socketWrapper.write(imagePath);
                             socketWrapper.flush();
                         }
                         else if(s.equals("sellPlayer"))
