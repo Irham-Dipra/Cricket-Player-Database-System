@@ -102,6 +102,7 @@ public class userHomePageController {
         try {
             main.getSocketWrapper().write("sellPlayer");
             main.getSocketWrapper().write(player);
+            main.getSocketWrapper().write(main.getClubName());
             main.getSocketWrapper().flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -117,6 +118,7 @@ public class userHomePageController {
         System.out.println("Buy button clicked");
         try {
             main.getSocketWrapper().write("buyPlayers");
+            main.getSocketWrapper().write(main.getClubName());
             main.getSocketWrapper().write(imagePath);
             main.getSocketWrapper().flush();
         } catch (Exception e) {

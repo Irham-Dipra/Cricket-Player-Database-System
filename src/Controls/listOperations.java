@@ -197,24 +197,25 @@ public class listOperations {
         return temp;
     }
 
-    public static void sellPlayer(ArrayList<Player> playerList, Player player)
+    public static void sellPlayer(ArrayList<Player> playerList, Player player, String club)
     {
         for(int i = 0;i < playerList.size();i++)
         {
             if(playerList.get(i).getName().equals(player.getName()))
             {
                 playerList.get(i).setClub("Free Agent");
+                playerList.get(i).setPrevious(club);
                 break;
             }
         }
     }
 
-    public static ArrayList<Player> getFreePlayers(ArrayList<Player> playerList)
+    public static ArrayList<Player> getFreePlayers(ArrayList<Player> playerList, String club)
     {
         ArrayList<Player> freePlayers = new ArrayList<>();
         for(Player player: playerList)
         {
-            if(player.club.equals("Free Agent"))
+            if(player.club.equals("Free Agent") && !player.previous.equals(club))
             {
                 freePlayers.add(player);
             }

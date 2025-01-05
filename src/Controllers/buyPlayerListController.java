@@ -130,6 +130,7 @@ public class buyPlayerListController {
         System.out.println("Refresh button clicked");
         try {
             main.getSocketWrapper().write("buyPlayers");
+            main.getSocketWrapper().write(main.getClubName());
             main.getSocketWrapper().write(imagePath);
             main.getSocketWrapper().flush();
         } catch (Exception e) {

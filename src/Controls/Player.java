@@ -7,6 +7,7 @@ public class Player implements Serializable  {
     int age, number = -1, salary;
     double height;
     boolean exist;
+    String previous = null;
 
 
     public Player(String name, String country, int age, double height, String club, String position, int number, int salary, boolean exist)
@@ -86,5 +87,11 @@ public class Player implements Serializable  {
     }
     public void setExist(boolean exist) {
         this.exist = exist;
+    }
+    public String getPrevious() {
+        return previous;
+    }
+    public void setPrevious(String previous) {
+        this.previous = previous;
     }
 }

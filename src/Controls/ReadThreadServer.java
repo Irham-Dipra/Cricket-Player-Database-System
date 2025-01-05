@@ -117,13 +117,6 @@ public class ReadThreadServer implements Runnable {
                             socketWrapper.write(listOperations.getTotalSalary(Server.playerList,club));
                             socketWrapper.flush();
                         }
-                        else if(s.equals("getFreePlayers"))
-                        {
-                            ArrayList <Player> freePlayers = listOperations.getFreePlayers(Server.playerList);
-                            socketWrapper.write("List");
-                            socketWrapper.write(freePlayers);
-                            socketWrapper.flush();
-                        }
                         else if(s.equals("getMyPlayers"))
                         {
                             String clubName = (String) socketWrapper.read();
@@ -134,10 +127,11 @@ public class ReadThreadServer implements Runnable {
                         }
                         else if(s.equals("buyPlayers"))
                         {
+                            String clubName = (String) socketWrapper.read();
                             String imagePath = (String) socketWrapper.read();
                             socketWrapper.write("buyPlayerList");
                             System.out.println("buy korte ashche");
-                            socketWrapper.write(listOperations.getFreePlayers(Server.playerList));
+                            socketWrapper.write(listOperations.getFreePlayers(Server.playerList, clubName));
                             socketWrapper.write(imagePath);
                             socketWrapper.flush();
                         }
@@ -145,7 +139,8 @@ public class ReadThreadServer implements Runnable {
                         {
                             System.out.println("sell korte ashche");
                             Player player = (Player) socketWrapper.read();
-                            listOperations.sellPlayer(Server.playerList, player);
+                            String clubName = (String) socketWrapper.read();
+                            listOperations.sellPlayer(Server.playerList, player, clubName);
                             System.out.println("Player sold: " + player.name);
                             listOperations.showDetails(player);
                             listOperations.showDetails(listOperations.getPlayerByName(Server.playerList, player.getName()));
