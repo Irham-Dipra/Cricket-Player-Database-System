@@ -1,4 +1,31 @@
 
+/* Buttons for actions */
+.details-button {
+    -fx-background-color: #1abc9c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 15px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.details-button:hover {
+    -fx-background-color: #16a085;
+}
+
+.sell-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 15px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.sell-button:hover {
+    -fx-background-color: #c0392b;
+}
+
 .form-title {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
@@ -24,11 +51,13 @@
 
 /* Table Styling */
 .table-view {
+    -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-background-color: rgba(255, 255, 255, 0.8);
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-padding: 5px;
+    -fx-padding: 10;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
 }
 
 .table-column-header {
@@ -38,11 +67,54 @@
     -fx-alignment: CENTER_LEFT;
 }
 
-.table-row-cell {
-    -fx-border-color: transparent;
-    -fx-background-color: #f9f9f9;
-    -fx-alternate-row-fill: #eaeaea;
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C);
 }
+
+.table-view .column-header-background .label {
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Table Rows */
+.table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:filled {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:filled:hover {
+    -fx-background-color: #d4e9d4; /* Light green hover effect */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #81C784; /* Selection color */
+    -fx-text-fill: white;
+}
+
+/* Cell Text */
+.table-cell {
+    -fx-text-fill: #333;
+    -fx-alignment: CENTER;
+    -fx-font-weight: normal;
+}
+
+/* Scroll Bar Styling */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: #020068; /* Dark green thumb */
+    -fx-background-radius: 5px;
+}
+.scroll-bar:vertical .track, .scroll-bar:horizontal .track {
+    -fx-background-color: #1e01fd;
+    -fx-background-radius: 5px;
+}
+
 
 /* Info Box Styling */
 .info-box {

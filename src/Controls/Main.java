@@ -71,7 +71,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void showUserHomePage(String userName, ArrayList <Player> playerList) throws Exception
+    public void showUserHomePage(String userName, ArrayList <Player> playerList, String imagePath) throws Exception
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Scenes/userHomePage.fxml"));
@@ -80,6 +80,7 @@ public class Main extends Application {
         // Loading the controller
         userHomePageController controller = loader.getController();
         controller.setMain(this);
+        controller.setBackgroundImage(imagePath);
         controller.init(playerList);
 
         // Set the primary stage
@@ -348,6 +349,7 @@ public class Main extends Application {
         countryPlayerCountController controller = loader.getController();
         controller.setCountryList(countryMap);
         controller.setMain(this);
+        controller.init();
 
         // Set the primary stage
         stage.setTitle("Country Player Count");
@@ -421,6 +423,24 @@ public class Main extends Application {
         alert.setHeaderText("Incorrect Credentials");
         alert.setContentText("The username and password you provided is not correct.");
         alert.showAndWait();
+    }
+
+    public static class CountryPlayerCount {
+        private final String country;
+        private final Integer playerCount;
+    
+        public CountryPlayerCount(String country, Integer playerCount) {
+            this.country = country;
+            this.playerCount = playerCount;
+        }
+    
+        public String getCountry() {
+            return country;
+        }
+    
+        public Integer getPlayerCount() {
+            return playerCount;
+        }
     }
     
     public static void main(String[] args) {

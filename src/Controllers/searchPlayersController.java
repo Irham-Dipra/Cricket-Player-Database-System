@@ -51,9 +51,9 @@ public class searchPlayersController {
     public void countryPlayerCountClicked(ActionEvent actionEvent)
     {
         System.out.println("country wise player count initiated");
-        Map <String, Integer> countryMap = PlayerList.getCountryWisePlayerCountMap();
         try {
-            main.showCountryPlayerCount(countryMap);
+            main.getSocketWrapper().write("countryPlayerCount");
+            main.getSocketWrapper().flush();
         } catch (Exception e) {
             e.printStackTrace();
         }

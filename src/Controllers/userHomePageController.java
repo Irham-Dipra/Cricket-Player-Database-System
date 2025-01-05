@@ -10,10 +10,15 @@ import Controls.*;
 import java.util.ArrayList;
 import java.io.IOException;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class userHomePageController {
 
-    public Main main;
+    private Main main;
+
+    @FXML
+    private ImageView backgroundImage;
 
     @FXML
     private TableView<Player> playersTable;
@@ -27,7 +32,11 @@ public class userHomePageController {
     // Observable list to hold players
     private final ObservableList<Player> playerList = FXCollections.observableArrayList();
 
-    // Initialize the controller
+    // Set dynamic background image
+    public void setBackgroundImage(String imagePath) {
+        backgroundImage.setImage(new Image(imagePath));
+    }
+
     @FXML
     public void init(ArrayList<Player> list) {
         // Set up the player name column
@@ -39,9 +48,9 @@ public class userHomePageController {
             private final Button sellButton = new Button("Sell");
 
             {
-                // Button styles
-                detailsButton.setStyle("-fx-background-color: #1abc9c; -fx-text-fill: white; -fx-font-weight: bold;");
-                sellButton.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;");
+                // Apply style classes for buttons
+                detailsButton.getStyleClass().add("details-button");
+                sellButton.getStyleClass().add("sell-button");
 
                 // Action for Details button
                 detailsButton.setOnAction(event -> {
@@ -64,6 +73,7 @@ public class userHomePageController {
 
             private HBox createActionButtons() {
                 HBox hbox = new HBox(10);
+                hbox.getStyleClass().add("action-buttons");
                 hbox.getChildren().addAll(detailsButton, sellButton);
                 return hbox;
             }
@@ -110,6 +120,15 @@ public class userHomePageController {
         try {
             main.getSocketWrapper().write("buyPlayers");
             main.getSocketWrapper().flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void backClicked(ActionEvent actionEvent) {
+        System.out.println("Back button clicked");
+        try {
+            main.showUserLoginPage();
         } catch (Exception e) {
             e.printStackTrace();
         }

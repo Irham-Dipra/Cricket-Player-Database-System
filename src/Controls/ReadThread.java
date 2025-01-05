@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ReadThread implements Runnable {
     private final Thread thr;
@@ -29,6 +30,7 @@ public class ReadThread implements Runnable {
                         System.out.println(loginDTO.isStatus());
                         String clubName = (String) main.socketWrapper.read();
                         ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
+                        String imagePath = (String) main.getSocketWrapper().read();
                         // the following is necessary to update JavaFX UI components from user created threads
                         Platform.runLater(new Runnable() {
                             @Override
@@ -37,7 +39,8 @@ public class ReadThread implements Runnable {
                                     try {
                                         main.setClubName(clubName);
                                         System.out.println("club name: " + main.getClubName());
-                                        main.showUserHomePage(loginDTO.getUserName(), playerList);
+                                        System.out.println("image path: " + imagePath);
+                                        main.showUserHomePage(loginDTO.getUserName(), playerList, imagePath);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -113,6 +116,20 @@ public class ReadThread implements Runnable {
                                 });
                             }
                         }
+                        else if(s.equals("showCountryPlayerCount"))
+                        {
+                            HashMap<String, Integer> countryPlayerCount = (HashMap<String, Integer>) main.getSocketWrapper().read();
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        main.showCountryPlayerCount(countryPlayerCount);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
                         else if(s.equals("showTotalSalary"))
                         {
                             String club = (String) main.getSocketWrapper().read();
@@ -146,11 +163,12 @@ public class ReadThread implements Runnable {
                         else if(s.equals("backToClubList"))
                         {
                             ArrayList<Player> playerList = (ArrayList<Player>) main.getSocketWrapper().read();
+                            String imagePath = (String) main.getSocketWrapper().read();
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
                                     try {
-                                        main.showUserHomePage(main.getClubName(), playerList);
+                                        main.showUserHomePage(main.getClubName(), playerList, imagePath);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }

@@ -8,30 +8,29 @@ import javafx.scene.control.TableView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.Map;
-import Phase1.PlayerList;
 
 public class countryPlayerCountController {
 
     private Main main;
 
     @FXML
-    private TableView<PlayerList.CountryPlayerCount> table;
+    private TableView<Main.CountryPlayerCount> table;
 
     @FXML
-    private TableColumn<PlayerList.CountryPlayerCount, String> country;
+    private TableColumn<Main.CountryPlayerCount, String> country;
 
     @FXML
-    private TableColumn<PlayerList.CountryPlayerCount, Integer> playerCount;
+    private TableColumn<Main.CountryPlayerCount, Integer> playerCount;
 
-    private ObservableList<PlayerList.CountryPlayerCount> countryList = FXCollections.observableArrayList();
+    private ObservableList<Main.CountryPlayerCount> countryList = FXCollections.observableArrayList();
 
     public void setCountryList(Map<String, Integer> countryMap) {
         for (Map.Entry<String, Integer> entry : countryMap.entrySet()) {
-            countryList.add(new PlayerList.CountryPlayerCount(entry.getKey(), entry.getValue()));
+            countryList.add(new Main.CountryPlayerCount(entry.getKey(), entry.getValue()));
         }
     }
 
-    public void initialize() {
+    public void init() {
         country.setCellValueFactory(new PropertyValueFactory<>("country"));
         playerCount.setCellValueFactory(new PropertyValueFactory<>("playerCount"));
 

@@ -1,10 +1,10 @@
-Kolkata Knight Riders, src/Images/kkr.jpg
-Rajasthan Royals, src/Images/rr.jpg
-Delhi Capitals, src/Images/dc.jpg
-Sunrisers Hydrabad, src/Images/srh.jpg
-Gujarat Titans, src/Images/gt.jpg
-Punjab kings, src/Images/pbks.jpg
-Mumbai Indians, src/Images/mi.jpg
-Royal Challengers Bangalore, src/Images/rcb.jpg
-Chennai Super Kings, src/Images/csk.jpg
-Lucknow Super Giants, src/Images/lsg.jpg
+Kolkata Knight Riders,/Images/kkr-bg.jpg
+Rajasthan Royals,/Images/rr-bg.jpg
+Delhi Capitals,/Images/dc-bg.jpg
+Sunrisers Hydrabad,/Images/srh-bg.jpg
+Gujarat Titans,/Images/gt-bg.jpg
+Punjab kings,/Images/pbks-bg.jpg
+Mumbai Indians,/Images/mi-bg.png
+Royal Challengers Bangalore,/Images/rcb-bg.png
+Chennai Super Kings,/Images/csk-bg.jpg
+Lucknow Super Giants,/Images/lsg-bg.jpg

@@ -256,23 +256,23 @@ public class listOperations {
         playerList.add(player);
     }
 
-    public static class CountryPlayerCount {
-        private final String country;
-        private final Integer playerCount;
+    // public static class CountryPlayerCount {
+    //     private final String country;
+    //     private final Integer playerCount;
     
-        public CountryPlayerCount(String country, Integer playerCount) {
-            this.country = country;
-            this.playerCount = playerCount;
-        }
+    //     public CountryPlayerCount(String country, Integer playerCount) {
+    //         this.country = country;
+    //         this.playerCount = playerCount;
+    //     }
     
-        public String getCountry() {
-            return country;
-        }
+    //     public String getCountry() {
+    //         return country;
+    //     }
     
-        public Integer getPlayerCount() {
-            return playerCount;
-        }
-    }
+    //     public Integer getPlayerCount() {
+    //         return playerCount;
+    //     }
+    // }
 
     // public static int getClubNetWorth(ArrayList<Player> playerList, String clubName)
     // {

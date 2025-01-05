@@ -33,6 +33,9 @@ public class ReadThreadServer implements Runnable {
                         String clubName = Server.initialMap.get(loginDTO.getUserName());
                         socketWrapper.write(clubName);
                         socketWrapper.write(listOperations.getClubPlayerList(Server.playerList, clubName));
+                        socketWrapper.write(Server.imageMap.get(clubName));
+                        System.out.println("image path: " + Server.imageMap.get(clubName));
+                        socketWrapper.flush();
                     }
                     else if(o instanceof String)
                     {
@@ -72,6 +75,12 @@ public class ReadThreadServer implements Runnable {
                             socketWrapper.write("List");
                             socketWrapper.write(listOperations.getPlayersBySalary(Server.playerList,min,max));
                             socketWrapper.write("searchSalary");
+                            socketWrapper.flush();
+                        }
+                        else if(s.equals("countryPlayerCount"))
+                        {
+                            socketWrapper.write("showCountryPlayerCount");
+                            socketWrapper.write(listOperations.getCountryWisePlayerCountMap(Server.playerList));
                             socketWrapper.flush();
                         }
                         else if(s.equals("getPlayersWithMaxSalary"))
@@ -149,6 +158,7 @@ public class ReadThreadServer implements Runnable {
                             System.out.println("Server e ashche backToClubList" + clubName);
                             socketWrapper.write("backToClubList");
                             socketWrapper.write(listOperations.getClubPlayerList(Server.playerList, clubName));
+                            socketWrapper.write(Server.imageMap.get(clubName));
                             System.out.println("the new list is: ");
                             socketWrapper.flush();
                         }
