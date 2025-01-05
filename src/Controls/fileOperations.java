@@ -86,6 +86,8 @@ public class fileOperations {
             bw.write(p.name + "," +  p.country + "," + Integer.toString(p.age) + "," + Double.toString(p.height) + "," + p.club + "," + p.position + ",");
             if(p.number != -1)
                 bw.write(Integer.toString(p.number) + ",");
+            else
+                bw.write(",");
             bw.write(Integer.toString(p.salary));
             bw.newLine();
         }
