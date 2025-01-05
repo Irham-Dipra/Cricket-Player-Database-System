@@ -32,9 +32,11 @@ public class buyPlayerListController {
     // Observable list to hold players
     private final ObservableList<Player> playerList = FXCollections.observableArrayList();
 
+    private String imagePath;
 
     // Set dynamic background image
     public void setBackgroundImage(String imagePath) {
+        this.imagePath = imagePath;
         backgroundImage.setImage(new Image(imagePath));
     }
 
@@ -123,6 +125,18 @@ public class buyPlayerListController {
             e.printStackTrace();
         }
     }
+
+    public void refreshClicked() {
+        System.out.println("Refresh button clicked");
+        try {
+            main.getSocketWrapper().write("buyPlayers");
+            main.getSocketWrapper().write(imagePath);
+            main.getSocketWrapper().flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setMain(Main main) {
         this.main = main;
     }

@@ -175,7 +175,7 @@ public class ReadThreadServer implements Runnable {
                         }
                         else if(s.equals("exit"))
                         {
-                            // fileOperations.saveData(Server.playerList);
+                            fileOperations.saveData(Server.playerList);
                             socketWrapper.write("exit");
                         }
                     }
