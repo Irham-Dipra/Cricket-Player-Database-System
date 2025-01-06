@@ -14,7 +14,7 @@
       <ImageView fx:id="backgroundImage" fitHeight="524.0" fitWidth="875.0" pickOnBounds="true" preserveRatio="true" />
       
       <!-- Layout for content -->
-      <VBox alignment="CENTER" layoutX="138.0" layoutY="43.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(255, 255, 255, 0.9); -fx-padding: 20px;">
+      <VBox alignment="CENTER" layoutX="138.0" layoutY="43.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: transparent ; -fx-padding: 20px;">
          <children>
             <!-- TableView for Player Actions -->
             <TableView fx:id="playersTable" prefHeight="300.0" prefWidth="572.0">

@@ -14,6 +14,7 @@ import javafx.util.Callback;
 import javafx.event.ActionEvent;
 import javafx.scene.paint.Color;
 import java.io.IOException;
+import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class showClubListDetailsController {
     public void init() {
         // Set up name column
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameColumn.setCellFactory(createNameCellFactory());
 
         // Set up info column with custom cell factory
         infoColumn.setCellValueFactory(param -> new javafx.beans.property.SimpleObjectProperty<>(param.getValue()));
@@ -60,6 +62,23 @@ public class showClubListDetailsController {
 
         // Save the command in a way accessible to the cell factory
         playerTable.setUserData(searchType);
+    }
+
+    private Callback<TableColumn<Player, String>, TableCell<Player, String>> createNameCellFactory() {
+        return param -> new TableCell<>() {
+            @Override
+            protected void updateItem(String playerName, boolean empty) {
+                super.updateItem(playerName, empty);
+                if (empty || playerName == null) {
+                    setGraphic(null);
+                } else {
+                    // Create a label to display the player's name
+                    Label nameLabel = new Label(playerName);
+                    nameLabel.getStyleClass().add("name-label"); // Add custom CSS class if needed
+                    setGraphic(nameLabel);
+                }
+            }
+        };
     }
 
     private Callback<TableColumn<Player, Player>, TableCell<Player, Player>> createInfoCellFactory() {

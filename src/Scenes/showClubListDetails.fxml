@@ -19,9 +19,9 @@
         <!-- Table to Display Player Info -->
         <TableView fx:id="playerTable" layoutX="112.0" layoutY="41.0" prefHeight="400.0" prefWidth="650.0">
             <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="144.80001831054688" />
-                <TableColumn fx:id="infoColumn" prefWidth="333.5999450683594" />
-            <TableColumn fx:id="actionColumn" prefWidth="149.60003662109375" />
+                <TableColumn fx:id="nameColumn" prefWidth="144.80001831054688" text="Player Name" />
+                <TableColumn fx:id="infoColumn" prefWidth="333.5999450683594" text="Informations" />
+            <TableColumn fx:id="actionColumn" prefWidth="149.60003662109375" text="Actions" />
             </columns>
         </TableView>
       <Button fx:id="back" layoutX="401.0" layoutY="454.0" mnemonicParsing="false" onAction="#backClicked" styleClass="modern-button" text="back" />
