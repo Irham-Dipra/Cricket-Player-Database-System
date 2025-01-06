@@ -2,7 +2,6 @@ package Controllers;
 import java.io.IOException;
 
 import Controls.*;
-import Phase1.PlayerList; // Ensure this import is correct and the PlayerList class exists
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
