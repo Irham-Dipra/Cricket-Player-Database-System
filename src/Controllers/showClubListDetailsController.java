@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.event.ActionEvent;
 import javafx.scene.paint.Color;
+import java.io.IOException;
 
 import java.util.ArrayList;
 
@@ -120,9 +121,15 @@ public class showClubListDetailsController {
                     actionBox.getStyleClass().add("action-box");
 
                     // "View" Button
-                    Button viewButton = new Button("View");
+                    Button viewButton = new Button("Details");
                     viewButton.getStyleClass().add("modern-button");
-                    viewButton.setOnAction(e -> showFullInfo(player));
+                    viewButton.setOnAction(e -> {
+                        try {
+                            main.showPlayerAlertDetails(player);
+                        } catch (IOException ioException) {
+                            ioException.printStackTrace();
+                        }
+                    });
 
                     actionBox.getChildren().addAll(viewButton);
                     setGraphic(actionBox);

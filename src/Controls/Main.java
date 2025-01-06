@@ -466,10 +466,10 @@ public class Main extends Application {
         Label countryLabel = new Label("Country: " + player.getCountry());
         Label clubLabel = new Label("Club: " + player.getClub());
         Label salaryLabel = new Label("Value: " + player.getSalary());
-        Label jerseyLabel = new Label("Wage: " + player.getJersey());
+        Label jerseyLabel = new Label("Jersey No: " + player.getJersey());
 
         // Set custom font size and style for labels
-        Font labelFont = new Font("Arial", 14); // Font size 14 for better readability
+        Font labelFont = new Font("Robota", 14); // Font size 14 for better readability
         ageLabel.setFont(labelFont);
         positionLabel.setFont(labelFont);
         countryLabel.setFont(labelFont);

@@ -84,15 +84,17 @@
     -fx-padding: 10;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-    -fx-font-family: "Arial";
+    -fx-font-family: "Roboto";
     -fx-font-size: 14px;
+    -fx-text-fill: #040404;
 }
 
 .table-column-header {
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-text-fill: #4285f4; /* Soft blue text for headers */
-    -fx-alignment: CENTER_LEFT;
+    -fx-background-color: #e8e8e8; /* Light gray header background */
+    -fx-border-color: #cccccc; /* Subtle border */
+    -fx-font-weight: bold; /* Bold header font */
+    -fx-font-size: 15px; /* Slightly larger font size */
+    -fx-text-fill: #000000; /* Darker font color for headers */
 }
 
 .table-view .column-header-background {
@@ -107,27 +109,35 @@
 
 /* Table Rows */
 .table-row-cell {
-    -fx-background-color: transparent;
+    -fx-background-color: rgb(50, 87, 200); /* White row background */
+    -fx-border-color: #dddddd; /* Subtle row borders */
+    -fx-font-size: 14px; /* Text size in rows */
+    -fx-text-fill: #271717; /* Dark text for row content */
 }
 
 .table-row-cell:filled {
-    -fx-background-color: #f9f9f9;
+    -fx-background-color: #4369b5;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9; /* Slightly different background for odd rows */
 }
 
 .table-row-cell:filled:hover {
-    -fx-background-color: #d4e9d4; /* Light green hover effect */
+    -fx-background-color: #9fed9f; /* Light green hover effect */
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #81C784; /* Selection color */
-    -fx-text-fill: white;
+    -fx-background-color: #cccccc; /* Gray highlight for selected row */
+    -fx-text-fill: #000000; /* Text color for selected row */
 }
 
 /* Cell Text */
 .table-cell {
-    -fx-text-fill: #333;
+    -fx-text-fill: #010101;
     -fx-alignment: CENTER;
-    -fx-font-weight: normal;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
 }
 
 /* Scroll Bar Styling */
@@ -147,8 +157,17 @@
 /* Info Box Styling */
 .info-box {
     -fx-alignment: CENTER_LEFT;
-}
+    -fx-fill: #050505;
+    -fx-font-family: "Arial";
 
+}
+/* Custom Labels (Info) */
+.info-label {
+    -fx-font-size: 14px;
+    -fx-fill: #050505; /* Dark text color */
+    -fx-font-weight: normal;
+
+}
 /* Action Box Styling */
 .action-box {
     -fx-alignment: CENTER;

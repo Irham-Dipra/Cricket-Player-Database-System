@@ -2,11 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="524.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.showPlayerDetailsController">
    <children>
@@ -14,59 +14,62 @@
       <ImageView fx:id="backgroundImage" fitHeight="524.0" fitWidth="875.0" pickOnBounds="true" preserveRatio="true" />
       
       <!-- Main VBox for content -->
-      <VBox alignment="CENTER" layoutX="250.0" layoutY="70.0" maxHeight="400.0" maxWidth="400.0" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" spacing="20.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(255, 255, 255, 0.85); -fx-padding: 20px;" stylesheets="@testStyles.css">
+      <VBox alignment="CENTER" layoutX="248.0" layoutY="55.0" maxHeight="400.0" maxWidth="400.0" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" spacing="15.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(255, 255, 255, 0.85); -fx-padding: 20px;" stylesheets="@testStyles.css">
          <children>
             <!-- Name -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" spacing="29.0">
                <Label styleClass="form-label" text="Name" />
-               <Label fx:id="nameLabel" styleClass="form-value" text="Label" />
+               <Label fx:id="nameLabel" styleClass="form-value" text="Label">
+                  <font>
+                     <Font name="Roboto" size="12.0" />
+                  </font></Label>
             </HBox>
             
             <!-- Age -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" spacing="29.0">
                <Label styleClass="form-label" text="Age" />
                <Label fx:id="ageLabel" styleClass="form-value" text="Label" />
             </HBox>
             
             <!-- Height -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" spacing="29.0">
                <Label styleClass="form-label" text="Height" />
                <Label fx:id="heightLabel" styleClass="form-value" text="Label" />
             </HBox>
             
             <!-- Salary -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" spacing="29.0">
                <Label styleClass="form-label" text="Salary" />
                <Label fx:id="salaryLabel" styleClass="form-value" text="Label" />
             </HBox>
             
             <!-- Club -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" spacing="29.0">
                <Label styleClass="form-label" text="Club" />
                <Label fx:id="clubLabel" styleClass="form-value" text="Label" />
             </HBox>
             
             <!-- Country -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" spacing="29.0">
                <Label styleClass="form-label" text="Country" />
                <Label fx:id="countryLabel" styleClass="form-value" text="Label" />
             </HBox>
             
-            <!-- Position -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                  <!-- Position -->
+            <HBox alignment="CENTER_LEFT" spacing="29.0">
                <Label styleClass="form-label" text="Position" />
                <Label fx:id="positionLabel" styleClass="form-value" text="Label" />
             </HBox>
             
             <!-- Jersey Number -->
             <HBox alignment="CENTER_LEFT" spacing="20.0">
-               <Label styleClass="form-label" text="Jersey Number" />
+               <Label styleClass="form-label" text="Jersey No " />
                <Label fx:id="jerseyLabel" styleClass="form-value" text="Label" />
             </HBox>
          </children>
       </VBox>
       
       <!-- Back Button -->
-      <Button fx:id="back" layoutX="388.0" layoutY="490.0" mnemonicParsing="false" onAction="#backClicked" styleClass="modern-button-secondary" text="Back" />
+      <Button fx:id="back" layoutX="402.0" layoutY="470.0" mnemonicParsing="false" onAction="#backClicked" styleClass="modern-button-secondary" stylesheets="@testStyles.css" text="Back" />
    </children>
 </AnchorPane>
